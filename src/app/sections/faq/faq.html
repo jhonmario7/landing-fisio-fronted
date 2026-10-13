@@ -1,1 +1,11 @@
-<p>faq works!</p>
+<section class="section" id="faq">
+  <div class="wrap faq" appRevealOnScroll>
+    <app-section-header eyebrow="Dudas frecuentes" title="Preguntas frecuentes" />
+
+    @if (content.faq.length) {
+      <app-accordion [items]="content.faq" />
+    } @else {
+      <p class="faq-pending">[PENDIENTE: preguntas frecuentes de la fisioterapeuta]</p>
+    }
+  </div>
+</section>

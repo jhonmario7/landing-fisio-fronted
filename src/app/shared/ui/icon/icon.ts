@@ -13,7 +13,12 @@ export type IconName =
   | 'facebook'
   | 'tiktok'
   | 'menu'
-  | 'close';
+  | 'close'
+  | 'activity'
+  | 'target'
+  | 'hand'
+  | 'droplet'
+  | 'home';
 
 @Component({
   imports: [],

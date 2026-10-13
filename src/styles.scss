@@ -1,29 +1,30 @@
 :root {
   color-scheme: light;
 
-  // Color
+  // Color — paleta oficial de la marca (convertida desde el CMYK del brandbook de la cliente)
   --color-bg: #ffffff;
-  --color-bg-alt: #f1f8f3;
-  --color-text: #1c2622;
-  --color-text-soft: #5b6b62;
-  --color-border: rgba(28, 38, 34, 0.1);
+  --color-bg-alt: #faf5e9;
+  --color-text: #26170f; // Chocolate (marca)
+  --color-text-soft: #6b5847;
+  --color-border: rgba(38, 23, 15, 0.12);
   --color-card: #ffffff;
 
-  --color-primary: #3fa34d;
-  --color-primary-tint: #e7f5e9;
-  --color-cta: #297a38;
-  --color-cta-hover: #246b31;
-  --color-accent: #f2933b;
-  --color-accent-tint: #fdecdc;
+  --color-primary: #c39800; // Dorado Medio (marca)
+  --color-primary-tint: #fbefd1;
+  --color-cta: #26170f; // Chocolate — único color válido para botón con texto blanco (~17:1)
+  --color-cta-hover: #3d2a1c;
+  --color-accent: #ad7a00; // Dorado Oscuro (marca) — SOLO decorativo, no pasa AA con texto blanco
+  --color-accent-tint: #f3e2be;
+  --color-danger: #b42318;
 
   // Elevation / shape
-  --shadow-card: 0 16px 36px -18px rgba(28, 38, 34, 0.28);
+  --shadow-card: 0 16px 36px -18px rgba(38, 23, 15, 0.28);
   --radius-card: 18px;
   --radius-pill: 999px;
 
-  // Typography
-  --font-display: 'Poppins', 'Segoe UI', sans-serif;
-  --font-sans: 'Manrope', 'Segoe UI', -apple-system, sans-serif;
+  // Typography — equivalentes web de las fuentes de marca (Book Antiqua Bold / Calibri Light)
+  --font-display: 'Lora', 'Georgia', serif;
+  --font-sans: 'Carlito', 'Segoe UI', -apple-system, sans-serif;
 
   // Spacing scale
   --space-1: 0.25rem;

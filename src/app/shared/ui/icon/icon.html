@@ -65,5 +65,25 @@
     @case ('close') {
       <path d="M18 6 6 18M6 6l12 12" />
     }
+    @case ('activity') {
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+    }
+    @case ('target') {
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+    }
+    @case ('hand') {
+      <path
+        d="M11 3v8M14 3.5v7.5M8 5v6M6 11v4a7 7 0 0 0 7 7h1a7 7 0 0 0 7-7v-3a2 2 0 0 0-4 0"
+      />
+    }
+    @case ('droplet') {
+      <path d="M12 2s6 7 6 11a6 6 0 1 1-12 0c0-4 6-11 6-11Z" />
+    }
+    @case ('home') {
+      <path d="m3 11 9-8 9 8" />
+      <path d="M5 10v10h14V10" />
+    }
   }
 </svg>

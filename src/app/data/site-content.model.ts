@@ -2,6 +2,8 @@ export interface SiteContent {
   identity: SiteIdentity;
   credentials: ProfessionalCredentials;
   services: Service[];
+  identificationPoints: string[];
+  careProcess: CareStep[];
   operation: OperationInfo;
   differentiators: Differentiator[];
   testimonials: Testimonial[];
@@ -15,9 +17,16 @@ export interface SiteIdentity {
   businessName: string;
   professionalName: string;
   tagline: string;
+  subtitle: string;
+  bio: string;
   logoUrl?: string;
   heroPhoto: MediaAsset;
   aboutPhoto: MediaAsset;
+}
+
+export interface CareStep {
+  title: string;
+  description: string;
 }
 
 export interface MediaAsset {

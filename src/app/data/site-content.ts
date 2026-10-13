@@ -4,9 +4,12 @@ import { SiteContent } from './site-content.model';
 // Nunca reemplazar un [PENDIENTE] con un valor inventado.
 export const SITE_CONTENT: SiteContent = {
   identity: {
-    businessName: '[PENDIENTE: nombre comercial]',
-    professionalName: '[PENDIENTE: nombre completo de la fisioterapeuta]',
+    businessName: 'Yuli Fernanda Silva',
+    professionalName: 'Yuli Fernanda Silva',
     tagline: 'Vuelve a moverte sin dolor',
+    subtitle:
+      'Fisioterapia personalizada en [PENDIENTE: ciudad], con valoración integral y seguimiento de tu evolución.',
+    bio: '[PENDIENTE: historia, formación y motivación de la fisioterapeuta, en primera persona o narrada]',
     heroPhoto: {
       src: '/images/hero-placeholder.jpg',
       alt: '[PENDIENTE: foto profesional real de la fisioterapeuta]',
@@ -31,7 +34,113 @@ export const SITE_CONTENT: SiteContent = {
     rethusRegistry: null,
   },
 
-  services: [],
+  services: [
+    {
+      id: 'valoracion-integral',
+      name: 'Valoración Integral Fisioterapéutica',
+      icon: 'target',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'terapia-manual-ortopedica',
+      name: 'Terapia Manual Ortopédica',
+      icon: 'hand',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'rehabilitacion-deportiva',
+      name: 'Rehabilitación Deportiva',
+      icon: 'activity',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'ejercicio-terapeutico',
+      name: 'Ejercicio Terapéutico',
+      icon: 'activity',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'rehabilitacion-postquirurgica',
+      name: 'Rehabilitación Postquirúrgica',
+      icon: 'shield-check',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'presoterapia',
+      name: 'Presoterapia',
+      icon: 'droplet',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'descarga-muscular',
+      name: 'Descarga Muscular',
+      icon: 'hand',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+    {
+      id: 'vendaje-neuromuscular',
+      name: 'Vendaje Neuromuscular',
+      icon: 'shield-check',
+      shortDescription: '[PENDIENTE: descripción breve del servicio]',
+      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      sessionDurationMinutes: null,
+      requiresMedicalOrder: null,
+      modalities: [],
+    },
+  ],
+
+  identificationPoints: [
+    'Sientes dolor lumbar que no cede con el descanso.',
+    'Tienes una lesión deportiva que te impide entrenar con normalidad.',
+    'Estás en recuperación después de una cirugía.',
+  ],
+
+  careProcess: [
+    {
+      title: 'Valoración inicial',
+      description: 'Evaluamos tu caso a fondo para entender el origen del dolor o la lesión.',
+    },
+    {
+      title: 'Plan de tratamiento',
+      description: 'Diseñamos un plan personalizado según tu diagnóstico y tus objetivos.',
+    },
+    {
+      title: 'Sesiones',
+      description: 'Aplicamos el tratamiento con seguimiento de tu evolución en cada cita.',
+    },
+    {
+      title: 'Seguimiento',
+      description: 'Ajustamos el plan y acompañamos tu recuperación hasta el alta.',
+    },
+  ],
 
   operation: {
     modalities: [],
@@ -64,12 +173,13 @@ export const SITE_CONTENT: SiteContent = {
   faq: [],
 
   social: {
-    whatsappPhoneE164: '[PENDIENTE: número de WhatsApp con código de país, ej. 573001234567]',
-    phoneDisplay: '[PENDIENTE: teléfono para mostrar en UI]',
+    whatsappPhoneE164: '573144085632',
+    phoneDisplay: '314 408 5632',
+    instagramUrl: 'https://instagram.com/ft.yulifernandasilva',
   },
 
   seo: {
-    defaultTitle: '[PENDIENTE: nombre comercial] | Fisioterapia en [PENDIENTE: ciudad]',
+    defaultTitle: 'Yuli Fernanda Silva | Fisioterapia Integral en [PENDIENTE: ciudad]',
     defaultDescription: '[PENDIENTE: descripción SEO de 150-160 caracteres]',
     canonicalUrl: '[PENDIENTE: dominio definitivo]',
     ogImage: {
@@ -84,9 +194,9 @@ export const SITE_CONTENT: SiteContent = {
       '@context': 'https://schema.org',
       '@type': 'MedicalBusiness',
       medicalSpecialty: 'PhysicalTherapy',
-      name: '[PENDIENTE: nombre comercial]',
+      name: 'Yuli Fernanda Silva',
       image: '[PENDIENTE: URL de imagen]',
-      telephone: '[PENDIENTE: teléfono en formato +57...]',
+      telephone: '+573144085632',
       address: {
         '@type': 'PostalAddress',
         streetAddress: '[PENDIENTE: dirección]',
@@ -94,7 +204,7 @@ export const SITE_CONTENT: SiteContent = {
         addressCountry: 'CO',
       },
       openingHoursSpecification: [],
-      sameAs: [],
+      sameAs: ['https://instagram.com/ft.yulifernandasilva'],
     },
   },
 

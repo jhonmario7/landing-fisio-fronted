@@ -1,1 +1,30 @@
-<p>about works!</p>
+<section class="section" id="sobre-mi">
+  <div class="wrap about" appRevealOnScroll>
+    <div class="about__media">
+      <img
+        [ngSrc]="content.identity.aboutPhoto.src"
+        [alt]="content.identity.aboutPhoto.alt"
+        [width]="content.identity.aboutPhoto.width"
+        [height]="content.identity.aboutPhoto.height"
+      />
+    </div>
+    <div class="about__copy">
+      <app-section-header eyebrow="Sobre mí" [title]="content.identity.professionalName" />
+      <p class="about__bio">{{ content.identity.bio }}</p>
+
+      @if (content.credentials.yearsOfExperience !== null) {
+        <p class="about__years">
+          {{ content.credentials.yearsOfExperience }} años de experiencia
+        </p>
+      }
+
+      @if (allCredentials.length) {
+        <div class="about__credentials">
+          @for (credential of allCredentials; track credential.label) {
+            <app-credential-badge [credential]="credential" />
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>

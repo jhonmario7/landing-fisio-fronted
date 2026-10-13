@@ -1,1 +1,19 @@
-<p>hero works!</p>
+<section class="hero wrap" id="top">
+  <div class="hero__copy">
+    <h1>{{ content.identity.tagline }}</h1>
+    <p class="hero__subtitle">{{ content.identity.subtitle }}</p>
+    <div class="hero__actions">
+      <app-button variant="primary" [href]="whatsappHref">Agenda por WhatsApp</app-button>
+      <app-button variant="ghost" href="#servicios">Ver servicios</app-button>
+    </div>
+  </div>
+  <div class="hero__media">
+    <img
+      [ngSrc]="content.identity.heroPhoto.src"
+      [alt]="content.identity.heroPhoto.alt"
+      [width]="content.identity.heroPhoto.width"
+      [height]="content.identity.heroPhoto.height"
+      priority
+    />
+  </div>
+</section>

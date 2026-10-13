@@ -1,1 +1,48 @@
-<p>location works!</p>
+<section class="section alt" id="ubicacion">
+  <div class="wrap location" appRevealOnScroll>
+    <div class="location__copy">
+      <app-section-header
+        eyebrow="Visítanos"
+        [title]="'Te esperamos en ' + content.operation.location.city"
+      />
+      <p class="location__address">{{ content.operation.location.addressLine }}</p>
+
+      <ul class="location__hours">
+        @for (range of content.operation.hours; track range.day) {
+          <li>
+            <span>{{ dayLabel(range.day) }}</span>
+            <span>{{ formatHours(range) }}</span>
+          </li>
+        }
+      </ul>
+
+      @if (hasDirectionsUrl) {
+        <app-button variant="primary" [href]="content.operation.location.googleMapsDirectionsUrl">
+          Cómo llegar
+        </app-button>
+      } @else {
+        <app-button variant="primary" [disabled]="true">Cómo llegar</app-button>
+      }
+    </div>
+
+    <div class="location__map">
+      @defer (on viewport) {
+        @if (mapEmbedUrl) {
+          <iframe
+            [src]="mapEmbedUrl"
+            width="100%"
+            height="100%"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de ubicación del consultorio"
+          ></iframe>
+        } @else {
+          <p class="location__map-pending">[PENDIENTE: URL de embed de Google Maps]</p>
+        }
+      } @placeholder {
+        <div class="location__map-placeholder"></div>
+      }
+    </div>
+  </div>
+</section>

@@ -9,19 +9,19 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--color-cta);
   color: #fff;
-  box-shadow: 0 10px 24px -8px rgba(63, 163, 77, 0.6);
+  box-shadow: 0 10px 24px -8px rgba(38, 23, 15, 0.6);
   animation: wa-pulse 2.6s ease-in-out infinite;
 }
 
 @keyframes wa-pulse {
   0%,
   100% {
-    box-shadow: 0 10px 24px -8px rgba(63, 163, 77, 0.6);
+    box-shadow: 0 10px 24px -8px rgba(38, 23, 15, 0.6);
   }
   50% {
-    box-shadow: 0 10px 24px -4px rgba(63, 163, 77, 0.9);
+    box-shadow: 0 10px 24px -4px rgba(38, 23, 15, 0.9);
   }
 }
 

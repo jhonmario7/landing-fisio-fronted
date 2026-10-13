@@ -1,1 +1,21 @@
-<p>testimonials works!</p>
+@if (content.testimonials.length) {
+  <section class="section">
+    <div class="wrap" appRevealOnScroll>
+      <app-section-header
+        eyebrow="Lo que dicen mis pacientes"
+        title="Testimonios"
+        align="center"
+      />
+      <div class="testimonials-grid">
+        @for (testimonial of content.testimonials; track testimonial.id) {
+          @if (testimonial.authorizedInWriting) {
+            <blockquote class="testimonial-card">
+              <p>"{{ testimonial.text }}"</p>
+              <footer>{{ testimonial.authorName }}</footer>
+            </blockquote>
+          }
+        }
+      </div>
+    </div>
+  </section>
+}

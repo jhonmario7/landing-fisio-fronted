@@ -1,1 +1,32 @@
-<p>header works!</p>
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="brand" href="#top" (click)="closeMenu()">
+      {{ content.identity.businessName }}
+    </a>
+
+    <nav class="nav-links" [class.is-open]="isMenuOpen()">
+      @for (link of navLinks; track link.fragment) {
+        <a [href]="'#' + link.fragment" (click)="closeMenu()">{{ link.label }}</a>
+      }
+      <app-button
+        variant="primary"
+        size="sm"
+        [href]="'tel:+' + content.social.whatsappPhoneE164"
+        class="nav-links__cta"
+      >
+        Agenda tu valoración
+      </app-button>
+    </nav>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-controls="nav-links"
+      aria-label="Abrir menú"
+    >
+      <app-icon [name]="isMenuOpen() ? 'close' : 'menu'" />
+    </button>
+  </div>
+</header>

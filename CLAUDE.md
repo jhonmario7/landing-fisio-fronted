@@ -8,7 +8,8 @@ Ver `docs/PLAN.md` para el plan completo por fases. Este archivo son las convenc
 - SSG puro vía `@angular/ssr`: todas las rutas en `app.routes.server.ts` usan `RenderMode.Prerender`; `angular.json` tiene `outputMode: "static"`. No hay servidor Node en producción — la salida (`dist/fronted-landing-fisio/browser/`) es HTML/CSS/JS estático.
 - `@angular/router` solo para dos rutas: `''` (home) y `'politica-de-tratamiento-de-datos'`. No agregar más rutas sin que lo pida el brief.
 - Sin Angular Material, sin Tailwind. Solo SCSS + variables CSS como design tokens.
-- Sin backend en esta etapa (`backend-landing-fisio` permanece vacío). Contacto = formulario reactivo que abre WhatsApp (`wa.me/<numero>?text=` + `encodeURIComponent`).
+- Sin backend en esta etapa (`backend-landing-fisio` permanece vacío). Contacto = formulario que abre WhatsApp (`wa.me/<numero>?text=` + `encodeURIComponent`).
+- Formularios: **Signal Forms** (`@angular/forms/signals` — `form()`, `required()`, `pattern()`, `minLength()`, la directiva `[formField]`), NO el `ReactiveFormsModule` clásico (`FormGroup`/`FormControl`). Es la API nueva de formularios de Angular 22, confirmada en `node_modules/@angular/forms/types/signals.d.ts` (`publicApi 22.0`). Ver `sections/contact/contact.ts` como referencia de uso.
 
 ## Regla de contenido
 
@@ -25,6 +26,10 @@ src/app/
 └── data/       → site-content.model.ts, site-content.ts
 ```
 
+## Materiales de la cliente
+
+`docs/materiales-fisio/` (ignorado por git) guarda documentos fuente que la cliente comparte: brandbook/logo, tarjeta de presentación, etc. Son la fuente de verdad para datos de marca — revisar ahí antes de asumir que algo sigue `[PENDIENTE]`.
+
 ## Restricciones no negociables
 
 - **Nunca inventar datos**: nombre, credenciales, cifras, testimonios o fotos deben venir confirmados por la cliente. Lo no confirmado se marca `[PENDIENTE: detalle]` en `site-content.ts`.
@@ -37,27 +42,33 @@ src/app/
 - **Animaciones**: deben respetar `prefers-reduced-motion`.
 - **Imágenes**: `NgOptimizedImage`, `priority` solo en la foto del hero, lazy en el resto, WebP/AVIF con dimensiones explícitas.
 
-## Design tokens (paleta aprobada)
+## Design tokens (marca real de la cliente)
 
-Paleta validada contra una landing real de fisioterapia ya en producción (estilo "bienestar" cálido-orgánico), con la fórmula de CTA oscurecida para garantizar AA 4.5:1 estricto:
+**La paleta y tipografía NO son una elección de diseño nuestra — son la identidad de marca real de Yuli Fernanda Silva**, extraída de `docs/materiales-fisio/logo.pdf` (brandbook con valores CMYK oficiales) y convertida a hex. Esto reemplaza una paleta verde/naranja que se había usado provisionalmente antes de tener el brandbook real; nunca se debe volver a esa paleta.
 
 ```scss
 --color-bg: #FFFFFF;
---color-bg-alt: #F1F8F3;         // paper-2, verde muy pálido
---color-text: #1C2622;           // ink
---color-text-soft: #5B6B62;      // ink-soft, texto secundario
---color-border: rgba(28,38,34,.10);
+--color-bg-alt: #FAF5E9;         // crema cálido derivado del dorado
+--color-text: #26170F;           // Chocolate (marca)
+--color-text-soft: #6B5847;
+--color-border: rgba(38,23,15,.12);
 
---color-primary: #3FA34D;        // green — iconos, links grandes/bold, bordes, fondos con tint
---color-primary-tint: #E7F5E9;   // green-tint, fondo de íconos/badges
---color-cta: #297A38;            // oscurecido desde #2E8A3E (ref: 4.35:1) para blanco-sobre-fondo ≥4.5:1 estricto — ÚNICO uso: fondo de botón primario con texto blanco
---color-accent: #F2933B;         // orange — SOLO decorativo: pin de mapa, badges, íconos sobre su propio tint. NUNCA como fondo de botón con texto blanco (da ~2.3:1, falla AA)
---color-accent-tint: #FDECDC;
+--color-primary: #C39800;        // Dorado Medio (marca) — iconos, links grandes/bold, bordes, fondos con tint
+--color-primary-tint: #FBEFD1;
+--color-cta: #26170F;            // Chocolate (marca) — ÚNICO color válido para fondo de botón con texto blanco (~17:1, muy por encima de AA)
+--color-cta-hover: #3D2A1C;
+--color-accent: #AD7A00;         // Dorado Oscuro (marca) — SOLO decorativo (no pasa AA con texto blanco, ~3.8:1)
+--color-accent-tint: #F3E2BE;
+--color-danger: #B42318;         // mensajes de error de formulario (no es color de marca, estándar de accesibilidad)
 ```
 
-**Regla de uso de color**: `--color-primary` (verde) y `--color-accent` (naranja) son para iconos, bordes, fondos-con-tint o texto grande/bold — nunca texto normal sobre blanco sin tint (ambos caen por debajo de 4.5:1 en esa combinación). El único color apto como fondo de botón con texto blanco es `--color-cta`. El texto siempre usa `--color-text` / `--color-text-soft`.
+**Regla de uso de color**: los dorados (`--color-primary`, `--color-accent`) son para iconos, bordes, fondos-con-tint o texto grande/bold — nunca texto normal ni botones con texto blanco (fallan AA 4.5:1 en esa combinación). El único color apto como fondo de botón/FAB con texto blanco es `--color-cta` (chocolate) — así es como la propia cliente usa su marca en la tarjeta de presentación (panel chocolate + dorado/blanco). El texto siempre usa `--color-text` / `--color-text-soft`.
 
-Tipografía: **Poppins** (500/600/700, títulos — `var(--display)`) + **Manrope** (400-700, cuerpo — `var(--sans)`), ambas de Google Fonts con `font-display: swap`. Combo validado contra la referencia; reemplaza la elección inicial de Inter única.
+**Tipografía**: el brandbook especifica **Book Antiqua Bold** (títulos) + **Calibri Light** (cuerpo) — fuentes de escritorio/Office, no disponibles en Google Fonts. Sustituidas por equivalentes web:
+- `--font-display: 'Lora'` (serif clásica, mismo carácter formal que Book Antiqua/Palatino).
+- `--font-sans: 'Carlito'` — no es una aproximación, es el clon métricamente compatible oficial de Calibri, también en Google Fonts.
+
+Ambas cargadas en `index.html` con `font-display: swap`.
 
 ## Comandos
 

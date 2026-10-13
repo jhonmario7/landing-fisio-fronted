@@ -1,1 +1,18 @@
-<p>pain-points works!</p>
+<section class="section">
+  <div class="wrap pain-points" appRevealOnScroll>
+    <div class="pain-points__copy">
+      <h2>¿Te identificas?</h2>
+      <ul class="pain-points__list">
+        @for (point of content.identificationPoints; track point) {
+          <li>
+            <app-icon name="check" [size]="18" />
+            <span>{{ point }}</span>
+          </li>
+        }
+      </ul>
+      <app-button variant="primary" [href]="whatsappHref">
+        No esperes a que empeore — agenda hoy
+      </app-button>
+    </div>
+  </div>
+</section>

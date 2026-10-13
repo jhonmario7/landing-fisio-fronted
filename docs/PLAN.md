@@ -53,6 +53,8 @@ export interface SiteContent {
   identity: SiteIdentity;
   credentials: ProfessionalCredentials;
   services: Service[];
+  identificationPoints: string[];  // copy genérico "¿Te identificas?", no es dato de la cliente
+  careProcess: CareStep[];         // copy genérico del proceso de atención
   operation: OperationInfo;
   differentiators: Differentiator[];
   testimonials: Testimonial[];   // array vacío -> sección se oculta sola
@@ -66,11 +68,14 @@ export interface SiteIdentity {
   businessName: string;
   professionalName: string;
   tagline: string;
+  subtitle: string;
+  bio: string;                     // [PENDIENTE] hasta que la cliente la confirme
   logoUrl?: string;
-  colors?: { primary?: string; accent?: string };
   heroPhoto: MediaAsset;
   aboutPhoto: MediaAsset;
 }
+
+export interface CareStep { title: string; description: string; }
 
 export interface MediaAsset {
   src: string; alt: string; width: number; height: number;
@@ -176,25 +181,27 @@ export interface LegalInfo { dataPolicyUrl: string; dataPolicyLastUpdated: strin
 1. **Opción de contacto (Fase 4)** — **Opción A** (WhatsApp sin backend) para esta etapa de vista previa; coincide con que `backend-landing-fisio` sigue vacío. Para producción simple: **Web3Forms** sobre Formspree/EmailJS (mejor límite gratuito, menos exposición de key en cliente) — verificar límites vigentes antes de decidir.
 2. **Proveedor de preview (Fase 6)** — **Cloudflare Pages**: HTTPS automático, previews por PR, free tier sin restricción de uso comercial (a diferencia de Vercel Hobby). Netlify es alternativa igualmente válida si se prefiere su flujo de arrastrar-y-soltar.
 3. **UI: SCSS+CSS vars vs Tailwind/Angular Material** — **Solo SCSS + variables CSS**: Angular Material añade peso pensado para dashboards, no para una landing de ~10 componentes; Tailwind duplica lo que ya hacen los tokens.
-4. **Tipografía** — **Poppins (500/600/700, títulos) + Manrope (400-700, cuerpo)**, vía Google Fonts con `font-display: swap`. Decisión tomada tras revisar `mymfisioterapiaintegral.com` (landing real de fisioterapia ya en producción) — se adoptó su combo de fuentes en vez de la propuesta inicial de Inter única.
-5. **Paleta de colores** — Se adoptó el estilo "bienestar cálido-orgánico" de la referencia (verde + naranja) en vez de la paleta azul-verdosa/terracota inicial, con el CTA oscurecido para garantizar AA 4.5:1 estricto (el verde de la referencia da ~4.35:1, insuficiente):
-   - `--color-bg: #FFFFFF`, `--color-bg-alt: #F1F8F3`
-   - `--color-text: #1C2622`, `--color-text-soft: #5B6B62`
-   - `--color-primary: #3FA34D` (verde — iconos/bordes/tints, no texto normal sobre blanco)
-   - `--color-cta: #297A38` (oscurecido desde `#2E8A3E`; único color válido para fondo de botón con texto blanco, ratio ≥4.5:1)
-   - `--color-accent: #F2933B` (naranja — solo decorativo: pin de mapa, badges, iconos sobre su propio tint `#FDECDC`; nunca fondo de botón con texto blanco, da ~2.3:1)
+4. **Tipografía** — **RESUELTO con datos reales de marca** (`docs/materiales-fisio/logo.pdf`): el brandbook de la cliente especifica Book Antiqua Bold + Calibri Light. Sustituidas por sus equivalentes web: **Lora** (títulos) + **Carlito** (cuerpo, clon métrico oficial de Calibri), vía Google Fonts con `font-display: swap`. Esto reemplaza toda decisión anterior basada en referencias de la competencia (Inter, o Poppins/Manrope) — una marca real siempre tiene prioridad.
+5. **Paleta de colores** — **RESUELTO con datos reales de marca**: dorado + chocolate, con valores CMYK oficiales del brandbook convertidos a hex, CTA en chocolate para garantizar AA ≥4.5:1 estricto (el dorado de marca da solo ~2.7:1 con texto blanco):
+   - `--color-bg: #FFFFFF`, `--color-bg-alt: #FAF5E9`
+   - `--color-text: #26170F` (Chocolate), `--color-text-soft: #6B5847`
+   - `--color-primary: #C39800` (Dorado Medio — iconos/bordes/tints, no texto normal sobre blanco)
+   - `--color-cta: #26170F` (Chocolate; único color válido para fondo de botón/FAB con texto blanco, ratio ~17:1)
+   - `--color-accent: #AD7A00` (Dorado Oscuro — solo decorativo; nunca fondo de botón con texto blanco, da ~3.8:1, falla AA)
 6. **Router mínimo** — Se agrega `@angular/router` solo para la página de política de datos (footer), en vez de meter ese contenido legal en la landing.
 7. **Mapa de ubicación** — Se mantiene el Google Maps embebido real con `@defer`, tal como pide el brief original (la referencia usa una ilustración estática en su lugar, pero se descartó esa opción).
 
 ## Información `[PENDIENTE]` a pedir a la cliente (Fase 0)
 
-**Identidad**: nombre comercial; logo (o decidir si se usa texto como logo); colores de marca si ya existen; fotos profesionales (mín. 1 hero, 1 "sobre mí", 3-4 del consultorio).
+Resuelto a partir de `docs/materiales-fisio/` (logo.pdf + servicios.pdf, tarjeta de presentación real): nombre comercial/profesional (Yuli Fernanda Silva), logo, colores de marca, tipografía de marca, WhatsApp (314 408 5632), Instagram (@ft.yulifernandasilva), y los 8 nombres de servicios. Sigue pendiente:
+
+**Identidad**: fotos profesionales (mín. 1 hero, 1 "sobre mí", 3-4 del consultorio).
 **Credenciales**: formación académica (universidad, título, año); especializaciones/certificaciones; tarjeta profesional; registro ReTHUS (si es público); años de experiencia.
-**Servicios** (por cada uno): nombre, duración de sesión, si requiere orden médica, beneficio principal para el paciente.
+**Servicios** (por cada uno de los 8 ya nombrados): descripción breve, duración de sesión, si requiere orden médica, beneficio principal para el paciente.
 **Operación**: dirección exacta (debe coincidir con Google Business Profile); ciudad/país; horarios por día; modalidades (consultorio/domicilio/virtual); medios de pago; convenios o solo particular (y cuáles).
 **Diferenciales**: 3-4 razones concretas (sin comparar con otros profesionales).
 **Prueba social**: testimonios reales con autorización escrita explícita; enlace a reseñas de Google.
-**Canales**: WhatsApp (con código de país); teléfono alterno; Instagram; Facebook; TikTok; URL de Google Business Profile.
+**Canales**: teléfono alterno; Facebook; TikTok; URL de Google Business Profile.
 **Público objetivo**: confirmar o ajustar (deportistas, dolor crónico, post-quirúrgicos, adultos mayores, gestantes, otro).
 **Legal**: ¿existe ya una política de tratamiento de datos (Ley 1581 de 2012) o se redacta una base genérica para revisión legal posterior?
 

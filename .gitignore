@@ -42,3 +42,9 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Materiales personales de la cliente (logo fuente, documentos de identidad/credenciales)
+/docs/materiales-fisio/
+
+# Claude Code session artifacts
+/.claude/

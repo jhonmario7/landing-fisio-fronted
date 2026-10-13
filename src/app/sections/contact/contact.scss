@@ -1,0 +1,104 @@
+.contact {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.contact__copy p {
+  color: var(--color-text-soft);
+  margin-top: var(--space-2);
+  line-height: 1.7;
+}
+
+.contact__channels {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+}
+
+.contact__channels a {
+  font-weight: 700;
+  color: var(--color-cta);
+  text-decoration: none;
+}
+
+.contact-form {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-form__success {
+  background: var(--color-primary-tint);
+  color: var(--color-cta);
+  padding: var(--space-3);
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-field input[type='text'],
+.form-field input[type='tel'],
+.form-field textarea {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 1px;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field--checkbox label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+.form-field--checkbox input {
+  margin-top: 3px;
+}
+
+.form-field--checkbox a {
+  color: var(--color-cta);
+}
+
+.form-field__error {
+  color: var(--color-danger);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+@media (max-width: 820px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}

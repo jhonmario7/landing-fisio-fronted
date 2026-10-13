@@ -1,1 +1,26 @@
-<p>services works!</p>
+<section class="section alt" id="servicios">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Lo que hacemos"
+      title="Nuestros servicios"
+      subtitle="Cada servicio tiene su propio enfoque, pensado para tu recuperación."
+    />
+
+    @if (content.services.length) {
+      <div class="services-grid">
+        @for (service of content.services; track service.id; let i = $index) {
+          <article class="service-card" [class]="accentClass(i)" appRevealOnScroll>
+            <span class="service-card__icon">
+              <app-icon [name]="resolveIcon(service.icon)" [size]="28" />
+            </span>
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.shortDescription }}</p>
+            <p class="service-card__benefit">{{ service.benefit }}</p>
+          </article>
+        }
+      </div>
+    } @else {
+      <p class="services-pending">[PENDIENTE: lista de servicios que ofrece la fisioterapeuta]</p>
+    }
+  </div>
+</section>
