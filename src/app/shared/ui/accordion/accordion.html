@@ -1,0 +1,28 @@
+<div class="accordion">
+  @for (item of items(); track item.id) {
+    <div class="accordion-item">
+      <h3>
+        <button
+          class="accordion-trigger"
+          type="button"
+          [attr.aria-expanded]="isOpen(item.id)"
+          [attr.aria-controls]="'faq-panel-' + item.id"
+          (click)="toggle(item.id)"
+        >
+          <span>{{ item.question }}</span>
+          <app-icon
+            name="chevron-down"
+            [size]="20"
+            class="accordion-chevron"
+            [class.is-open]="isOpen(item.id)"
+          />
+        </button>
+      </h3>
+      @if (isOpen(item.id)) {
+        <div class="accordion-panel" [id]="'faq-panel-' + item.id" role="region">
+          <p>{{ item.answer }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

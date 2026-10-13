@@ -1,0 +1,18 @@
+@if (href() && !disabled()) {
+  <a
+    class="btn btn-{{ variant() }} btn-{{ size() }}"
+    [href]="href()"
+    [attr.aria-label]="ariaLabel()"
+  >
+    <ng-content />
+  </a>
+} @else {
+  <button
+    class="btn btn-{{ variant() }} btn-{{ size() }}"
+    [type]="type()"
+    [disabled]="disabled()"
+    [attr.aria-label]="ariaLabel()"
+  >
+    <ng-content />
+  </button>
+}

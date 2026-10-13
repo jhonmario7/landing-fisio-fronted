@@ -1,0 +1,9 @@
+<div class="section-header section-header--{{ align() }}">
+  @if (eyebrow()) {
+    <p class="eyebrow">{{ eyebrow() }}</p>
+  }
+  <h2>{{ title() }}</h2>
+  @if (subtitle()) {
+    <p class="section-header__subtitle">{{ subtitle() }}</p>
+  }
+</div>

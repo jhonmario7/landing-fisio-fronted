@@ -1,0 +1,162 @@
+:root {
+  color-scheme: light;
+
+  // Color
+  --color-bg: #ffffff;
+  --color-bg-alt: #f1f8f3;
+  --color-text: #1c2622;
+  --color-text-soft: #5b6b62;
+  --color-border: rgba(28, 38, 34, 0.1);
+  --color-card: #ffffff;
+
+  --color-primary: #3fa34d;
+  --color-primary-tint: #e7f5e9;
+  --color-cta: #297a38;
+  --color-cta-hover: #246b31;
+  --color-accent: #f2933b;
+  --color-accent-tint: #fdecdc;
+
+  // Elevation / shape
+  --shadow-card: 0 16px 36px -18px rgba(28, 38, 34, 0.28);
+  --radius-card: 18px;
+  --radius-pill: 999px;
+
+  // Typography
+  --font-display: 'Poppins', 'Segoe UI', sans-serif;
+  --font-sans: 'Manrope', 'Segoe UI', -apple-system, sans-serif;
+
+  // Spacing scale
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+
+  // Layout
+  --content-max-width: 1160px;
+
+  // Motion
+  --transition-fast: 0.18s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.section {
+  padding-block: var(--space-6);
+}
+
+.section.alt {
+  background: var(--color-bg-alt);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[appRevealOnScroll] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[appRevealOnScroll].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [appRevealOnScroll] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
