@@ -1,21 +1,34 @@
-@if (content.testimonials.length) {
-  <section class="section">
-    <div class="wrap" appRevealOnScroll>
-      <app-section-header
-        eyebrow="Lo que dicen mis pacientes"
-        title="Testimonios"
-        align="center"
-      />
+<section class="section">
+  <div class="wrap" appRevealOnScroll>
+    <app-section-header
+      eyebrow="Lo que dicen mis pacientes"
+      title="Testimonios"
+      align="center"
+    />
+
+    @if (content.testimonials.length) {
       <div class="testimonials-grid">
         @for (testimonial of content.testimonials; track testimonial.id) {
           @if (testimonial.authorizedInWriting) {
             <blockquote class="testimonial-card">
+              @if (testimonial.rating) {
+                <div class="testimonial-card__rating" aria-hidden="true">
+                  @for (star of [1, 2, 3, 4, 5]; track star) {
+                    <span [class.is-filled]="star <= testimonial.rating!">★</span>
+                  }
+                </div>
+              }
               <p>"{{ testimonial.text }}"</p>
               <footer>{{ testimonial.authorName }}</footer>
             </blockquote>
           }
         }
       </div>
+    }
+
+    <div class="testimonials-cta">
+      <p>¿Ya tuviste tu valoración? Cuéntanos cómo te fue.</p>
+      <app-button variant="ghost" [href]="reviewRequestHref">Comparte tu experiencia</app-button>
     </div>
-  </section>
-}
+  </div>
+</section>

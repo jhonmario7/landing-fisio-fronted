@@ -2,6 +2,10 @@ import { SiteContent } from './site-content.model';
 
 // Todo lo marcado [PENDIENTE] espera confirmación de la fisioterapeuta (ver docs/PLAN.md, Fase 0).
 // Nunca reemplazar un [PENDIENTE] con un valor inventado.
+//
+// Excepción autorizada explícitamente por la cliente (14 oct 2026): bio, descripciones/beneficios
+// de servicios y FAQ son BORRADOR redactado por Claude para que ella los revise sobre un prototipo
+// visual y pida cambios — no son hechos inventados sobre ella, son copy de marketing a su criterio.
 
 const FULL_ADDRESS =
   'Avenida 26 #51-101, Ciudadela Deportiva El Bosque, Neiva, Huila, Colombia';
@@ -13,7 +17,7 @@ export const SITE_CONTENT: SiteContent = {
     tagline: 'Vuelve a moverte sin dolor',
     subtitle:
       'Fisioterapia personalizada en Neiva, con valoración integral y seguimiento de tu evolución.',
-    bio: '[PENDIENTE: historia, formación y motivación de la fisioterapeuta, en primera persona o narrada]',
+    bio: 'Soy fisioterapeuta egresada de la FUMC, sede Neiva, en 2024, y actualmente curso mi especialización en Terapia Manual y Ortopedia en la Universidad de la Sabana. Me he formado también en actividad deportiva y rehabilitación física, prevención de lesiones y readaptación funcional del deportista lesionado, porque quiero ofrecerte mucho más que un alivio temporal: busco ayudarte a recuperar tu movilidad y volver a lo que te gusta hacer, ya sea entrenar, trabajar o simplemente moverte sin dolor. En cada sesión combino terapia manual con las herramientas terapéuticas que mejor se ajusten a tu caso, y te acompaño de cerca durante todo tu proceso de recuperación.', // BORRADOR
     logoUrl: '/images/logo-dark.svg',
     heroPhoto: {
       src: '/images/hero.webp',
@@ -53,8 +57,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'valoracion-integral',
       name: 'Valoración Integral Fisioterapéutica',
       icon: 'target',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Una evaluación completa de tu condición física, movilidad y dolor para identificar el origen del problema.',
+      benefit: 'Entender qué te está pasando y con qué plan vamos a trabajar.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -63,8 +68,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'terapia-manual-ortopedica',
       name: 'Terapia Manual Ortopédica',
       icon: 'hand',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Técnicas manuales aplicadas sobre músculos, articulaciones y tejidos para aliviar el dolor y mejorar el movimiento.',
+      benefit: 'Recuperar movilidad y reducir las molestias en articulaciones y músculos.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -73,8 +79,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'rehabilitacion-deportiva',
       name: 'Rehabilitación Deportiva',
       icon: 'activity',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Tratamiento enfocado en lesiones relacionadas con la práctica deportiva, para que vuelvas a entrenar con confianza.',
+      benefit: 'Volver a tu actividad física o deporte favorito de forma segura.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -83,8 +90,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'ejercicio-terapeutico',
       name: 'Ejercicio Terapéutico',
       icon: 'activity',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Rutinas de ejercicio diseñadas específicamente para tu recuperación y fortalecimiento.',
+      benefit: 'Fortalecer tu cuerpo y prevenir que la lesión o el dolor vuelvan a aparecer.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -93,8 +101,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'rehabilitacion-postquirurgica',
       name: 'Rehabilitación Postquirúrgica',
       icon: 'shield-check',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Acompañamiento fisioterapéutico después de una cirugía, siguiendo tu proceso de recuperación paso a paso.',
+      benefit: 'Recuperar tu funcionalidad de forma segura después de una operación.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -103,8 +112,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'presoterapia',
       name: 'Presoterapia',
       icon: 'droplet',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Terapia de compresión que estimula la circulación y ayuda a disminuir la inflamación.',
+      benefit: 'Reducir la hinchazón y sentir las piernas o la zona tratada más ligeras.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -113,8 +123,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'descarga-muscular',
       name: 'Descarga Muscular',
       icon: 'hand',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Masaje y técnicas específicas para liberar tensión muscular acumulada por esfuerzo o estrés físico.',
+      benefit: 'Aliviar la tensión muscular y sentir más libertad de movimiento.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -123,8 +134,9 @@ export const SITE_CONTENT: SiteContent = {
       id: 'vendaje-neuromuscular',
       name: 'Vendaje Neuromuscular',
       icon: 'shield-check',
-      shortDescription: '[PENDIENTE: descripción breve del servicio]',
-      benefit: '[PENDIENTE: beneficio principal para el paciente]',
+      shortDescription:
+        'Aplicación de vendaje terapéutico que da soporte a músculos y articulaciones durante tu recuperación o actividad.',
+      benefit: 'Mantener soporte en la zona tratada mientras te mantienes activo.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -206,7 +218,51 @@ export const SITE_CONTENT: SiteContent = {
 
   testimonials: [],
 
-  faq: [],
+  faq: [
+    {
+      id: 'orden-medica',
+      question: '¿Necesito orden médica para asistir?',
+      answer:
+        'No es obligatoria, pero si ya tienes una orden médica puedes traerla a tu cita para complementar la valoración.',
+    },
+    {
+      id: 'que-llevar',
+      question: '¿Qué debo llevar a mi cita?',
+      answer:
+        'Ropa cómoda que te permita moverte con libertad y, si los tienes, tus estudios o exámenes médicos relacionados.',
+    },
+    {
+      id: 'duracion-valoracion',
+      question: '¿Cuánto dura la valoración inicial?',
+      answer: 'La valoración inicial dura aproximadamente 45 a 60 minutos, dependiendo de tu caso.',
+    },
+    {
+      id: 'domicilio',
+      question: '¿Atienden a domicilio?',
+      answer:
+        'Sí, ofrecemos atención en consultorio, a domicilio y de forma virtual, según lo que más te convenga.',
+    },
+    {
+      id: 'medios-pago',
+      question: '¿Qué medios de pago aceptan?',
+      answer: 'Aceptamos efectivo y transferencias.',
+    },
+    {
+      id: 'convenios',
+      question: '¿Manejan convenios con EPS o seguros?',
+      answer: 'Por ahora la atención es particular, sin convenios con EPS ni aseguradoras.',
+    },
+    {
+      id: 'ninos',
+      question: '¿Atienden niños?',
+      answer: 'Sí, atendemos a partir de los 11 años.',
+    },
+    {
+      id: 'como-agendar',
+      question: '¿Cómo agendo mi cita?',
+      answer: 'Escríbenos por WhatsApp contándonos brevemente tu caso y te confirmamos disponibilidad.',
+    },
+  ],
 
   social: {
     whatsappPhoneE164: '573144085632',

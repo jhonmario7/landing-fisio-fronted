@@ -35,7 +35,7 @@ src/app/
 - **Nunca inventar datos**: nombre, credenciales, cifras, testimonios o fotos deben venir confirmados por la cliente. Lo no confirmado se marca `[PENDIENTE: detalle]` en `site-content.ts`.
 - **Publicidad en salud**: prohibido "cura garantizada", "resultados en X sesiones", o comparaciones con otros profesionales.
 - **Datos personales (Ley 1581 de 2012, Colombia)**: el formulario de contacto pide solo nombre, teléfono y motivo general. Nunca pedir historia clínica ni diagnósticos. Checkbox de autorización obligatorio, con link a la política de tratamiento de datos.
-- **Testimonios**: solo reales y con autorización escrita (`authorizedInWriting: true`). Si el array está vacío, la sección se oculta automáticamente — no renderizar placeholders.
+- **Testimonios**: solo reales y con autorización escrita (`authorizedInWriting: true`); si el array está vacío no se renderizan tarjetas falsas. La sección en sí **ya no se oculta por completo** cuando no hay testimonios: siempre muestra un CTA "Comparte tu experiencia" que abre WhatsApp con un mensaje prellenado (reseña + estrellas). Es la recolección de reseñas que pidió la cliente — sin backend: ella las recibe por WhatsApp, decide cuáles aprobar, y se agregan manualmente a `site-content.ts` cuando las confirme (`sections/testimonials/testimonials.ts`).
 - **Fotos de stock**: si se usan temporalmente, marcar `isStockTemporary: true` en el `MediaAsset` correspondiente.
 - **Accesibilidad**: WCAG 2.1 AA, contraste mínimo 4.5:1, navegable por teclado con foco visible, alt text descriptivo real (nunca genérico).
 - **Un solo `<h1>`** por página, jerarquía de encabezados correcta.

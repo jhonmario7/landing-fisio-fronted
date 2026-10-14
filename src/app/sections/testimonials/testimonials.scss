@@ -24,6 +24,28 @@
   font-style: normal;
 }
 
+.testimonial-card__rating {
+  display: flex;
+  gap: 2px;
+  margin-bottom: var(--space-2);
+  color: var(--color-border);
+  font-size: 1.1rem;
+}
+
+.testimonial-card__rating .is-filled {
+  color: var(--color-primary);
+}
+
+.testimonials-cta {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+.testimonials-cta p {
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-3);
+}
+
 @media (max-width: 640px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
