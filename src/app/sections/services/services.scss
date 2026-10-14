@@ -1,36 +1,51 @@
+// 6 columnas y cada tarjeta ocupa 2: así la última fila incompleta se puede
+// centrar desplazando su primera tarjeta media o una columna completa.
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-4);
 }
 
 .service-card {
+  grid-column: span 2;
+}
+
+@media (min-width: 961px) {
+  // Última fila con 2 tarjetas → empieza en la columna 2.
+  .service-card:nth-child(3n + 1):nth-last-child(2) {
+    grid-column: 2 / span 2;
+  }
+
+  // Última fila con 1 tarjeta → al centro.
+  .service-card:nth-child(3n + 1):last-child {
+    grid-column: 3 / span 2;
+  }
+}
+
+.service-card {
+  --card-accent: var(--color-primary);
+  --card-accent-tint: var(--color-primary-tint);
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-primary);
+  border-left: 4px solid var(--card-accent);
   border-radius: var(--radius-card);
   padding: var(--space-4);
 }
 
 .service-card.is-accent {
-  border-top-color: var(--color-accent);
+  --card-accent: var(--color-accent);
+  --card-accent-tint: var(--color-accent-tint);
 }
 
-.service-card__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--color-primary-tint);
-  color: var(--color-primary);
+// Foto circular con aro en el color de acento de la tarjeta.
+.service-card__photo {
+  display: block;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--card-accent-tint);
   margin-bottom: var(--space-3);
-}
-
-.service-card.is-accent .service-card__icon {
-  background: var(--color-accent-tint);
-  color: var(--color-accent);
 }
 
 .service-card h3 {
@@ -59,10 +74,43 @@
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .services-grid .service-card {
+    grid-column: auto;
+  }
 }
 
 @media (max-width: 640px) {
   .services-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.services-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.services-cta p {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.services-cta span {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--color-text-soft);
 }

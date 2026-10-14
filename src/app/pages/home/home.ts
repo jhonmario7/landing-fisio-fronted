@@ -9,8 +9,8 @@ import { Header } from '../../sections/header/header';
 import { Hero } from '../../sections/hero/hero';
 import { Location } from '../../sections/location/location';
 import { PainPoints } from '../../sections/pain-points/pain-points';
-import { Process } from '../../sections/process/process';
 import { Services } from '../../sections/services/services';
+import { Space } from '../../sections/space/space';
 import { Testimonials } from '../../sections/testimonials/testimonials';
 
 @Component({
@@ -20,7 +20,7 @@ import { Testimonials } from '../../sections/testimonials/testimonials';
     PainPoints,
     Services,
     About,
-    Process,
+    Space,
     Testimonials,
     Location,
     Faq,

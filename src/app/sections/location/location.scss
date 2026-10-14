@@ -1,56 +1,204 @@
+// Tarjeta blanca partida: datos a la izquierda, mapa ilustrado a la derecha.
 .location {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: var(--space-5);
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border-radius: calc(var(--radius-card) * 1.5);
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+}
+
+.location__copy {
+  padding: var(--space-6) var(--space-5);
+}
+
+.location__copy ::ng-deep app-section-header .section-header {
+  margin-bottom: 0;
+}
+
+.location__lead {
+  margin-top: var(--space-3);
+  color: var(--color-text-soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .location__address {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-card);
+  background: var(--color-primary-tint);
+}
+
+.location__address app-icon {
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+.location__address strong {
+  display: block;
+  color: var(--color-text);
+}
+
+.location__address span {
+  font-size: 0.9rem;
   color: var(--color-text-soft);
-  margin-top: var(--space-2);
-  font-weight: 600;
 }
 
 .location__hours {
   list-style: none;
-  margin: var(--space-4) 0;
+  margin: var(--space-4) 0 0;
   padding: 0;
-  max-width: 320px;
 }
 
 .location__hours li {
   display: flex;
   justify-content: space-between;
-  padding: var(--space-2) 0;
+  padding: 6px 0;
   border-bottom: 1px solid var(--color-border);
-  font-size: 0.92rem;
-}
-
-.location__map,
-.location__map-placeholder {
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--color-primary-tint);
-}
-
-.location__map iframe {
-  display: block;
-}
-
-.location__map-pending {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  font-size: 0.9rem;
   color: var(--color-text-soft);
-  font-style: italic;
-  text-align: center;
-  padding: var(--space-4);
 }
 
-@media (max-width: 820px) {
+.location__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+// ---------- Mapa ilustrado ----------
+.location__map {
+  position: relative;
+  min-height: 360px;
+  background: var(--color-bg-alt);
+}
+
+.location__map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-grid {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.map-road {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 12;
+}
+
+.map-road--main {
+  stroke: var(--color-accent-tint);
+  stroke-width: 16;
+  stroke-linecap: round;
+}
+
+.map-road--thin {
+  stroke-width: 6;
+}
+
+.map-park {
+  fill: rgba(195, 152, 0, 0.12);
+}
+
+.location__map-tag {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-soft);
+}
+
+.location__pin {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+// Punto chocolate con aro dorado que late (mismo lenguaje que "En curso").
+.location__pin-dot {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cta);
+  border: 4px solid var(--color-primary);
+  box-shadow: 0 6px 14px -4px rgba(38, 23, 15, 0.5);
+}
+
+.location__pin-dot::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  animation: pin-pulse 2.4s ease-out infinite;
+}
+
+@keyframes pin-pulse {
+  from {
+    opacity: 0.9;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+.location__pin-label {
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
   .location {
     grid-template-columns: 1fr;
+  }
+
+  .location__copy {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .location__map {
+    min-height: 280px;
+  }
+
+  .location__pin-label {
+    white-space: normal;
+    text-align: center;
+    max-width: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .location__pin-dot::after {
+    animation: none;
   }
 }

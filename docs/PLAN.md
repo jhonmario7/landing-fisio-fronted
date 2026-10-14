@@ -36,7 +36,7 @@ fronted-landing-fisio/
         │   ├── ui/button, section-header, icon, credential-badge, whatsapp-fab, accordion
         │   └── directives/reveal-on-scroll.directive.ts  (IntersectionObserver + prefers-reduced-motion)
         ├── sections/
-        │   ├── header, hero, pain-points, services, about, process,
+        │   ├── header, hero, pain-points, services, about, space,
         │   │   testimonials, location, faq, contact, footer
         ├── pages/
         │   ├── home/home.component.ts            (orquesta las sections)
@@ -54,7 +54,6 @@ export interface SiteContent {
   credentials: ProfessionalCredentials;
   services: Service[];
   identificationPoints: string[];  // copy genérico "¿Te identificas?", no es dato de la cliente
-  careProcess: CareStep[];         // copy genérico del proceso de atención
   operation: OperationInfo;
   differentiators: Differentiator[];
   testimonials: Testimonial[];   // array vacío -> sección se oculta sola
@@ -75,7 +74,6 @@ export interface SiteIdentity {
   aboutPhoto: MediaAsset;
 }
 
-export interface CareStep { title: string; description: string; }
 
 export interface MediaAsset {
   src: string; alt: string; width: number; height: number;
@@ -110,7 +108,7 @@ export interface OperatingHoursRange {
 
 export interface ClinicLocation {
   addressLine: string; city: string; country: string;
-  googleMapsEmbedUrl: string; googleMapsDirectionsUrl: string;
+  googleMapsDirectionsUrl: string;
   coordinates: { lat: number; lng: number } | null;
   photos: MediaAsset[];
 }
@@ -170,7 +168,7 @@ export interface LegalInfo { dataPolicyUrl: string; dataPolicyLastUpdated: strin
 | **0 — Descubrimiento** | Reunir info real de la cliente | — | — | Usuario responde el cuestionario (abajo) o autoriza avanzar con `[PENDIENTE]` |
 | **1 — Arquitectura local** | Proyecto Angular 22 SSG puro | `angular.json`, `app.routes.server.ts`, `app.config.server.ts`, `data/site-content.*` | `nvm use <v24.15+\|22.22.3+>`; `npm i -g @angular/cli@22.2.2`; `ng new fronted-landing-fisio --style=scss --ssr --routing` | `ng build` genera solo `dist/fronted-landing-fisio/browser/`, sin carpeta `server/`; `ng serve` sin errores de consola |
 | **2 — Sistema de diseño** | Tokens SCSS + componentes base | `styles.scss`, `shared/ui/*` | — | Botones, tarjeta de servicio, acordeón FAQ, badge de credencial y FAB de WhatsApp con contraste ≥4.5:1 y soporte `prefers-reduced-motion` |
-| **3 — Secciones** | Las 11 secciones consumiendo `SITE_CONTENT` | `sections/*`, `pages/home` | — | Un solo `<h1>`, jerarquía de encabezados correcta, testimonios ocultos si el array está vacío, mapa cargado con `@defer (on viewport)` |
+| **3 — Secciones** | Las 11 secciones consumiendo `SITE_CONTENT` | `sections/*`, `pages/home` | — | Un solo `<h1>`, jerarquía de encabezados correcta, testimonios ocultos si el array está vacío, mapa ilustrado SVG + enlace "Cómo llegar" |
 | **4 — Contacto** | Opción A: WhatsApp sin backend | `sections/contact`, `core/whatsapp/whatsapp-link.util.ts` | — | Botón abre `wa.me/<numero>?text=...` con el mensaje armado; deshabilitado sin checkbox de autorización de datos marcado |
 | **5 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 | `core/seo/seo.service.ts`, `public/robots.txt`, `public/sitemap.xml` | — | JSON-LD válido (Rich Results Test), `NgOptimizedImage` con `priority` solo en hero, Lighthouse ≥90 en las 4 categorías |
 | **6 — Deploy de vista previa** | URL pública no indexable | — | `ng build` → subir `dist/fronted-landing-fisio/browser/` | Preview carga con `noindex`, cada push a GitHub lo actualiza automáticamente |
@@ -189,7 +187,7 @@ export interface LegalInfo { dataPolicyUrl: string; dataPolicyLastUpdated: strin
    - `--color-cta: #26170F` (Chocolate; único color válido para fondo de botón/FAB con texto blanco, ratio ~17:1)
    - `--color-accent: #AD7A00` (Dorado Oscuro — solo decorativo; nunca fondo de botón con texto blanco, da ~3.8:1, falla AA)
 6. **Router mínimo** — Se agrega `@angular/router` solo para la página de política de datos (footer), en vez de meter ese contenido legal en la landing.
-7. **Mapa de ubicación** — Se mantiene el Google Maps embebido real con `@defer`, tal como pide el brief original (la referencia usa una ilustración estática en su lugar, pero se descartó esa opción).
+7. **Mapa de ubicación** — **Cambio (14 oct 2026, decisión del usuario)**: se reemplazó el Google Maps embebido por un mapa ilustrado en SVG propio + botón "Cómo llegar" que abre la ruta en Google Maps en otra pestaña (como la referencia). Evita cargar el iframe de Google (peso, cookies de terceros) en la landing.
 
 ## Información `[PENDIENTE]` a pedir a la cliente (Fase 0)
 

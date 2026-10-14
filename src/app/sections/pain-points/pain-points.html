@@ -1,7 +1,7 @@
-<section class="section">
+<section class="section pain-points-section">
   <div class="wrap pain-points" appRevealOnScroll>
     <div class="pain-points__copy">
-      <h2>¿Te identificas?</h2>
+      <app-section-header eyebrow="¿Te identificas?" title="Tu cuerpo te está pidiendo un cambio." />
       <ul class="pain-points__list">
         @for (point of content.identificationPoints; track point) {
           <li>
@@ -13,6 +13,14 @@
       <app-button variant="primary" [href]="whatsappHref" target="_blank">
         No esperes a que empeore — agenda hoy
       </app-button>
+    </div>
+    <div class="pain-points__media">
+      <img
+        [ngSrc]="content.identity.painPhoto.src"
+        [alt]="content.identity.painPhoto.alt"
+        [width]="content.identity.painPhoto.width"
+        [height]="content.identity.painPhoto.height"
+      />
     </div>
   </div>
 </section>

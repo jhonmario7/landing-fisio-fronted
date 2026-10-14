@@ -1,34 +1,40 @@
-<section class="hero wrap" id="top">
-  <div class="hero__copy">
-    <span class="eyebrow">{{ eyebrow }}</span>
-    <h1>{{ content.identity.tagline }}</h1>
-    <p class="hero__subtitle">{{ content.identity.subtitle }}</p>
-    <div class="hero__actions">
-      <app-button variant="primary" [href]="whatsappHref" target="_blank">Agenda por WhatsApp</app-button>
-      <app-button variant="ghost" href="#servicios">Ver servicios</app-button>
-      <span class="hero__note">Respuesta inmediata</span>
-    </div>
-    <div class="hero__trust">
-      <span><app-icon name="check" [size]="16" />Consultorio, domicilio y virtual</span>
-      <span><app-icon name="check" [size]="16" />Atención personalizada</span>
-    </div>
-  </div>
-  <div class="hero__media">
-    <img
-      [ngSrc]="content.identity.heroPhoto.src"
-      [alt]="content.identity.heroPhoto.alt"
-      [width]="content.identity.heroPhoto.width"
-      [height]="content.identity.heroPhoto.height"
-      priority
-    />
-    @if (content.credentials.yearsOfExperience !== null) {
-      <div class="hero__stat">
-        <app-icon name="shield-check" [size]="18" />
-        <div>
-          <strong>{{ content.credentials.yearsOfExperience }} años</strong>
-          <span>de experiencia</span>
-        </div>
+<section class="hero" id="top">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow">{{ eyebrow }}</span>
+      <h1>{{ content.identity.tagline }}</h1>
+      <p class="hero__subtitle">{{ content.identity.subtitle }}</p>
+      <div class="hero__actions">
+        <app-button variant="primary" [href]="whatsappHref" target="_blank">
+          <app-icon name="whatsapp" [size]="18" />
+          Agenda por WhatsApp · {{ content.social.phoneDisplay }}
+        </app-button>
+        <span class="hero__note">Respuesta inmediata</span>
       </div>
-    }
+      <div class="hero__trust">
+        <span><app-icon name="check" [size]="16" />Consultorio, domicilio y virtual</span>
+        <span><app-icon name="check" [size]="16" />Atención personalizada</span>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="hero__photo-frame">
+        <img
+          [ngSrc]="content.identity.heroPhoto.src"
+          [alt]="content.identity.heroPhoto.alt"
+          [width]="content.identity.heroPhoto.width"
+          [height]="content.identity.heroPhoto.height"
+          priority
+        />
+      </div>
+      @if (content.credentials.yearsOfExperience !== null) {
+        <div class="hero__stat">
+          <app-icon name="shield-check" [size]="24" />
+          <div>
+            <strong>+{{ content.credentials.yearsOfExperience }} años</strong>
+            <span>de experiencia.</span>
+          </div>
+        </div>
+      }
+    </div>
   </div>
 </section>

@@ -4,20 +4,35 @@
       eyebrow="Lo que hacemos"
       title="Nuestros servicios"
       subtitle="Cada servicio tiene su propio enfoque, pensado para tu recuperación."
+      align="center"
     />
 
     @if (content.services.length) {
       <div class="services-grid">
         @for (service of content.services; track service.id; let i = $index) {
           <article class="service-card" [class]="accentClass(i)" appRevealOnScroll>
-            <span class="service-card__icon">
-              <app-icon [name]="resolveIcon(service.icon)" [size]="28" />
-            </span>
+            <img
+              class="service-card__photo"
+              [ngSrc]="service.image.src"
+              [alt]="service.image.alt"
+              [width]="service.image.width"
+              [height]="service.image.height"
+            />
             <h3>{{ service.name }}</h3>
             <p>{{ service.shortDescription }}</p>
             <p class="service-card__benefit">{{ service.benefit }}</p>
           </article>
         }
+      </div>
+      <div class="services-cta">
+        <p>
+          ¿Quieres agendar alguno de estos servicios?
+          <span>Escríbenos y te ayudamos a elegir el que mejor se ajusta a lo que necesitas.</span>
+        </p>
+        <app-button variant="primary" [href]="whatsappHref" target="_blank">
+          <app-icon name="whatsapp" [size]="18" />
+          {{ content.social.phoneDisplay }}
+        </app-button>
       </div>
     } @else {
       <p class="services-pending">[PENDIENTE: lista de servicios que ofrece la fisioterapeuta]</p>

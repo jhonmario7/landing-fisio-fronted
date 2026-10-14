@@ -13,14 +13,57 @@
 
 .pain-points__list li {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-2);
+  align-items: center;
+  gap: var(--space-3);
   color: var(--color-text-soft);
   font-size: 1.05rem;
 }
 
 .pain-points__list app-icon {
-  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary-tint);
+  color: var(--color-accent);
   flex-shrink: 0;
-  margin-top: 2px;
+}
+
+.pain-points {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+// La foto es vertical (700x933); el contenedor la recorta a horizontal
+// (mismo patrón que hero.scss: aspect-ratio en el contenedor, no en el <img>).
+.pain-points__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.pain-points__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+@media (max-width: 820px) {
+  .pain-points {
+    grid-template-columns: 1fr;
+  }
+}
+
+// El hero ya aporta espacio inferior; sin esto la separación entre ambos se duplica.
+.pain-points-section {
+  padding-top: var(--space-6);
 }

@@ -12,4 +12,8 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
 })
 export class Faq {
   protected readonly content = SITE_CONTENT;
+
+  private readonly half = Math.ceil(this.content.faq.length / 2);
+  protected readonly left = this.content.faq.slice(0, this.half);
+  protected readonly right = this.content.faq.slice(this.half);
 }

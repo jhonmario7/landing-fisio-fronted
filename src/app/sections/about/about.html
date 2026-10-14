@@ -1,41 +1,69 @@
 <section class="section" id="sobre-mi">
-  <div class="wrap about" appRevealOnScroll>
-    <div class="about__media">
-      <img
-        [ngSrc]="content.identity.aboutPhoto.src"
-        [alt]="content.identity.aboutPhoto.alt"
-        [width]="content.identity.aboutPhoto.width"
-        [height]="content.identity.aboutPhoto.height"
-      />
-    </div>
-    <div class="about__copy">
-      <app-section-header eyebrow="Sobre mí" [title]="content.identity.professionalName" />
-      <p class="about__bio">{{ content.identity.bio }}</p>
-
-      @if (content.credentials.yearsOfExperience !== null) {
-        <p class="about__years">
-          {{ content.credentials.yearsOfExperience }} años de experiencia
-        </p>
-      }
-
-      @if (allCredentials.length) {
-        <div class="about__credentials">
-          @for (credential of allCredentials; track credential.label) {
-            <app-credential-badge [credential]="credential" />
-          }
+  <div class="wrap">
+    <!-- 1. Presentación: retrato recortado sobre círculo degradado + nombre y bio -->
+    <div class="about-intro" appRevealOnScroll>
+      <div class="about-intro__portrait">
+        <div class="about-intro__clip">
+          <img
+            [ngSrc]="content.identity.aboutPhoto.src"
+            [alt]="content.identity.aboutPhoto.alt"
+            [width]="content.identity.aboutPhoto.width"
+            [height]="content.identity.aboutPhoto.height"
+          />
         </div>
-      }
+      </div>
+      <div class="about-intro__copy">
+        <app-section-header eyebrow="Sobre mí" [title]="content.identity.professionalName" />
+        <p class="about-intro__bio">{{ content.identity.bio }}</p>
+        @if (content.credentials.yearsOfExperience !== null) {
+          <p class="about-intro__years">
+            <app-icon name="shield-check" [size]="18" />
+            +{{ content.credentials.yearsOfExperience }} años de experiencia
+          </p>
+        }
+      </div>
+    </div>
 
-      @if (content.differentiators.length) {
-        <ul class="about__differentiators">
+    <!-- 2. Formación como línea de tiempo -->
+    @if (timeline.length) {
+      <div class="about-timeline" appRevealOnScroll>
+        <ol class="timeline" aria-label="Formación académica" [style.--items]="timeline.length">
+          @for (group of timeline; track group.year) {
+            <li class="timeline__group" [class.is-current]="group.year === 'En curso'">
+              <span class="timeline__year">{{ group.year }}</span>
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <ul class="timeline__items">
+                @for (item of group.items; track item.label) {
+                  <li>
+                    <strong>{{ item.label }}</strong>
+                    @if (item.detail) {
+                      <span>{{ item.detail }}</span>
+                    }
+                  </li>
+                }
+              </ul>
+            </li>
+          }
+        </ol>
+      </div>
+    }
+
+    <!-- 3. Enfoque: lo que vive el paciente, no 'por qué yo' -->
+    @if (content.differentiators.length) {
+      <div class="about-values" appRevealOnScroll>
+        <p class="eyebrow">Mi enfoque</p>
+        <ul class="about-values__grid">
           @for (item of content.differentiators; track item.title) {
             <li>
-              <strong>{{ item.title }}.</strong>
-              {{ item.description }}
+              <span class="about-values__icon">
+                <app-icon [name]="$any(item.icon)" [size]="24" />
+              </span>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
             </li>
           }
         </ul>
-      }
-    </div>
+      </div>
+    }
   </div>
 </section>

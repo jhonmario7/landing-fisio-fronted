@@ -1,69 +1,163 @@
 <section class="section alt" id="contacto">
-  <div class="wrap contact">
-    <div class="contact__copy">
-      <h2>¿Listo para agendar tu valoración?</h2>
-      <p>
-        Escríbenos directamente por WhatsApp o completa el formulario y te confirmamos tu cita.
-      </p>
-      <ul class="contact__channels">
-        <li>
-          <a [href]="'tel:+' + content.social.whatsappPhoneE164">{{ content.social.phoneDisplay }}</a>
-        </li>
-      </ul>
-    </div>
-
-    <form class="contact-form" (submit)="submit($event)" novalidate>
-      @if (sent()) {
-        <p class="contact-form__success" role="status">
-          ¡Listo! Se abrió WhatsApp con tu mensaje — solo confírmalo para enviarlo.
+  <div class="wrap">
+    <div class="contact" appRevealOnScroll>
+      <!-- Panel chocolate: qué pasa después + canales directos -->
+      <aside class="contact__panel">
+        <p class="eyebrow">Agenda tu cita</p>
+        <h2>¿Listo para agendar tu valoración?</h2>
+        <p class="contact__lead">
+          Déjame tus datos y te escribo por WhatsApp para confirmar tu cita.
         </p>
-      }
 
-      <div class="form-field">
-        <label for="contact-name">Nombre</label>
-        <input id="contact-name" type="text" autocomplete="name" [formField]="contactForm.name" />
-        @if (contactForm.name().touched() && contactForm.name().invalid()) {
-          <p class="form-field__error">{{ contactForm.name().errors()[0]?.message }}</p>
+        <ol class="contact__steps">
+          @for (step of content.contact.nextSteps; track step.title; let i = $index) {
+            <li>
+              <span class="contact__step-num" aria-hidden="true">{{ i + 1 }}</span>
+              <div>
+                <strong>{{ step.title }}</strong>
+                <span>{{ step.description }}</span>
+              </div>
+            </li>
+          }
+        </ol>
+
+        <ul class="contact__channels">
+          <li>
+            <app-icon name="whatsapp" [size]="18" />
+            <a [href]="'https://wa.me/' + content.social.whatsappPhoneE164" target="_blank" rel="noopener">
+              {{ content.social.phoneDisplay }}
+            </a>
+          </li>
+          @if (content.social.instagramUrl) {
+            <li>
+              <app-icon name="instagram" [size]="18" />
+              <a [href]="content.social.instagramUrl" target="_blank" rel="noopener">Instagram</a>
+            </li>
+          }
+          <li>
+            <app-icon name="clock" [size]="18" />
+            <span>{{ hours.join('  ·  ') }}</span>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Formulario -->
+      <div class="contact__form-wrap">
+        @if (sentUrl(); as url) {
+          <div class="contact-success" role="status">
+            <span class="contact-success__icon">
+              <app-icon name="check" [size]="32" />
+            </span>
+            <h3>¡Tu mensaje está listo!</h3>
+            <p>Se abrió WhatsApp con tus datos. Solo confírmalo para enviarlo.</p>
+            <div class="contact-success__actions">
+              <app-button variant="primary" [href]="url" target="_blank">
+                <app-icon name="whatsapp" [size]="18" />
+                Abrir WhatsApp de nuevo
+              </app-button>
+              <app-button variant="ghost" (click)="reset()">Volver al formulario</app-button>
+            </div>
+          </div>
+        } @else {
+          <form class="contact-form" (submit)="submit($event)" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contact-name">Nombre</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Tu nombre"
+                  [formField]="contactForm.name"
+                />
+                @if (contactForm.name().touched() && contactForm.name().invalid()) {
+                  <p class="form-field__error">{{ contactForm.name().errors()[0]?.message }}</p>
+                }
+              </div>
+
+              <div class="form-field">
+                <label for="contact-phone">Teléfono</label>
+                <input
+                  id="contact-phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="300 000 0000"
+                  [formField]="contactForm.phone"
+                />
+                @if (contactForm.phone().touched() && contactForm.phone().invalid()) {
+                  <p class="form-field__error">{{ contactForm.phone().errors()[0]?.message }}</p>
+                }
+              </div>
+            </div>
+
+            <fieldset class="form-field">
+              <legend>Motivo de tu consulta</legend>
+              <div class="chips">
+                @for (reason of content.contact.reasons; track reason) {
+                  <label class="chip">
+                    <input type="radio" [value]="reason" [formField]="contactForm.reason" />
+                    <span>{{ reason }}</span>
+                  </label>
+                }
+              </div>
+              @if (contactForm.reason().touched() && contactForm.reason().invalid()) {
+                <p class="form-field__error">{{ contactForm.reason().errors()[0]?.message }}</p>
+              }
+            </fieldset>
+
+            <fieldset class="form-field">
+              <legend>¿Cómo prefieres tu atención?</legend>
+              <div class="chips">
+                @for (modality of modalities; track modality) {
+                  <label class="chip">
+                    <input type="radio" [value]="modality" [formField]="contactForm.modality" />
+                    <span>{{ modality }}</span>
+                  </label>
+                }
+              </div>
+              @if (contactForm.modality().touched() && contactForm.modality().invalid()) {
+                <p class="form-field__error">{{ contactForm.modality().errors()[0]?.message }}</p>
+              }
+            </fieldset>
+
+            <div class="form-field">
+              <label for="contact-details">
+                Algo más que quieras contarme <span class="form-field__optional">(opcional)</span>
+              </label>
+              <textarea
+                id="contact-details"
+                rows="2"
+                placeholder="Ej.: horario que te queda mejor"
+                [formField]="contactForm.details"
+              ></textarea>
+              @if (contactForm.details().invalid()) {
+                <p class="form-field__error">{{ contactForm.details().errors()[0]?.message }}</p>
+              }
+            </div>
+
+            <div class="form-field form-field--checkbox">
+              <label>
+                <input type="checkbox" [formField]="contactForm.dataConsent" />
+                <span>
+                  Autorizo el tratamiento de mis datos personales conforme a la
+                  <a [href]="content.legal.dataPolicyUrl" target="_blank">política de tratamiento de datos</a>.
+                </span>
+              </label>
+              @if (contactForm.dataConsent().touched() && contactForm.dataConsent().invalid()) {
+                <p class="form-field__error">{{ contactForm.dataConsent().errors()[0]?.message }}</p>
+              }
+            </div>
+
+            <div class="contact-form__submit">
+              <app-button type="submit" variant="primary" [disabled]="!contactForm.dataConsent().value()">
+                <app-icon name="whatsapp" [size]="18" />
+                Enviar por WhatsApp
+              </app-button>
+              <p>Tus datos solo se usan para agendar tu cita.</p>
+            </div>
+          </form>
         }
       </div>
-
-      <div class="form-field">
-        <label for="contact-phone">Teléfono</label>
-        <input
-          id="contact-phone"
-          type="tel"
-          autocomplete="tel"
-          [formField]="contactForm.phone"
-        />
-        @if (contactForm.phone().touched() && contactForm.phone().invalid()) {
-          <p class="form-field__error">{{ contactForm.phone().errors()[0]?.message }}</p>
-        }
-      </div>
-
-      <div class="form-field">
-        <label for="contact-reason">Motivo de tu consulta</label>
-        <textarea id="contact-reason" rows="3" [formField]="contactForm.reason"></textarea>
-        @if (contactForm.reason().touched() && contactForm.reason().invalid()) {
-          <p class="form-field__error">{{ contactForm.reason().errors()[0]?.message }}</p>
-        }
-      </div>
-
-      <div class="form-field form-field--checkbox">
-        <label>
-          <input type="checkbox" [formField]="contactForm.dataConsent" />
-          <span>
-            Autorizo el tratamiento de mis datos personales conforme a la
-            <a [href]="content.legal.dataPolicyUrl" target="_blank">política de tratamiento de datos</a>.
-          </span>
-        </label>
-        @if (contactForm.dataConsent().touched() && contactForm.dataConsent().invalid()) {
-          <p class="form-field__error">{{ contactForm.dataConsent().errors()[0]?.message }}</p>
-        }
-      </div>
-
-      <app-button type="submit" variant="primary" [disabled]="!contactForm.dataConsent().value()">
-        Enviar por WhatsApp
-      </app-button>
-    </form>
+    </div>
   </div>
 </section>

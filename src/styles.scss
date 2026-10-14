@@ -23,8 +23,8 @@
   --radius-pill: 999px;
 
   // Typography — equivalentes web de las fuentes de marca (Book Antiqua Bold / Calibri Light)
-  --font-display: 'Poppins', 'Segoe UI', sans-serif;
-  --font-sans: 'Manrope', 'Segoe UI', -apple-system, sans-serif;
+  --font-display: 'Lora', 'Georgia', serif;
+  --font-sans: 'Carlito', 'Calibri', 'Segoe UI', -apple-system, sans-serif;
 
   // Spacing scale
   --space-1: 0.25rem;
@@ -110,7 +110,7 @@ button {
 
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;

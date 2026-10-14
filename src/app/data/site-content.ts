@@ -14,39 +14,48 @@ export const SITE_CONTENT: SiteContent = {
   identity: {
     businessName: 'Yuli Fernanda Silva',
     professionalName: 'Yuli Fernanda Silva',
-    tagline: 'Vuelve a moverte sin dolor',
+    tagline: 'Vuelve a moverte sin dolor.',
     brandTagline: 'Fisioterapia Integral Personalizada',
     subtitle:
-      'Fisioterapia personalizada en Neiva, con valoración integral y seguimiento de tu evolución.',
+      'Tratamientos personalizados para recuperar tu movilidad, aliviar el dolor y volver a tu rutina, con valoración integral y acompañamiento cercano en cada sesión.',
     bio: 'Soy fisioterapeuta egresada de la FUMC, sede Neiva, en 2024, y actualmente curso mi especialización en Terapia Manual y Ortopedia en la Universidad de la Sabana. Me he formado también en actividad deportiva y rehabilitación física, prevención de lesiones y readaptación funcional del deportista lesionado, porque quiero ofrecerte mucho más que un alivio temporal: busco ayudarte a recuperar tu movilidad y volver a lo que te gusta hacer, ya sea entrenar, trabajar o simplemente moverte sin dolor. En cada sesión combino terapia manual con las herramientas terapéuticas que mejor se ajusten a tu caso, y te acompaño de cerca durante todo tu proceso de recuperación.', // BORRADOR
     heroPhoto: {
       src: '/images/hero.webp',
       alt: 'Yuli Fernanda Silva, fisioterapeuta, sonriendo con su uniforme de trabajo',
       width: 787,
-      height: 1400,
+      height: 1231,
     },
     aboutPhoto: {
-      src: '/images/about.webp',
+      src: '/images/about-cutout.webp',
       alt: 'Yuli Fernanda Silva, fisioterapeuta, de brazos cruzados en actitud profesional',
-      width: 787,
-      height: 1400,
+      width: 720,
+      height: 1450,
+    },
+    // Foto de stock temporal, reemplazar cuando la cliente entregue la suya.
+    painPhoto: {
+      src: '/images/pain-banner.webp',
+      alt: 'Paciente boca abajo recibiendo terapia de frío con una compresa de gel sobre la espalda',
+      width: 700,
+      height: 933,
+      isStockTemporary: true,
     },
   },
 
   credentials: {
     yearsOfExperience: 2,
     education: [
-      { label: 'Fisioterapeuta — FUMC, sede Neiva', detail: 'Graduada en 2024', verifiable: true },
+      { label: 'Fisioterapeuta — FUMC, sede Neiva', detail: 'Graduada', year: '2024', verifiable: true },
     ],
     specializations: [
       {
         label: 'Especialización en Terapia Manual y Ortopedia',
         detail: 'Universidad de la Sabana — prácticas en curso',
+        year: 'En curso',
       },
-      { label: 'Diplomado en actividad deportiva y rehabilitación física', detail: '2023' },
-      { label: 'Curso Internacional de prevención de lesiones', detail: '2023' },
-      { label: 'Taller de readaptación funcional del deportista lesionado', detail: '2022' },
-      { label: 'Taller teórico-práctico de terapia de Cupping (ventosas)' },
+      { label: 'Diplomado en actividad deportiva y rehabilitación física', year: '2023' },
+      { label: 'Curso Internacional de prevención de lesiones', year: '2023' },
+      { label: 'Taller de readaptación funcional del deportista lesionado', year: '2022' },
+      { label: 'Taller teórico-práctico de terapia de Cupping (ventosas)' }, // [PENDIENTE: año]
     ],
     professionalCardNumber: null,
     rethusRegistry: null,
@@ -56,7 +65,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'valoracion-integral',
       name: 'Valoración Integral Fisioterapéutica',
-      icon: 'target',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-fisio.webp',
+        alt: 'Fisioterapeuta guiando a un paciente en un ejercicio con mancuerna durante una valoración',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Una evaluación completa de tu condición física, movilidad y dolor para identificar el origen del problema.',
       benefit: 'Entender qué te está pasando y con qué plan vamos a trabajar.',
@@ -67,7 +83,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'terapia-manual-ortopedica',
       name: 'Terapia Manual Ortopédica',
-      icon: 'hand',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-drenaje.webp',
+        alt: 'Fisioterapeuta aplicando terapia manual con ambas manos sobre la pierna de un paciente',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Técnicas manuales aplicadas sobre músculos, articulaciones y tejidos para aliviar el dolor y mejorar el movimiento.',
       benefit: 'Recuperar movilidad y reducir las molestias en articulaciones y músculos.',
@@ -78,7 +101,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'rehabilitacion-deportiva',
       name: 'Rehabilitación Deportiva',
-      icon: 'activity',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-fisio.webp',
+        alt: 'Fisioterapeuta guiando a un paciente en un ejercicio de fuerza con mancuerna',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Tratamiento enfocado en lesiones relacionadas con la práctica deportiva, para que vuelvas a entrenar con confianza.',
       benefit: 'Volver a tu actividad física o deporte favorito de forma segura.',
@@ -89,7 +119,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'ejercicio-terapeutico',
       name: 'Ejercicio Terapéutico',
-      icon: 'activity',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-fisio.webp',
+        alt: 'Paciente realizando un ejercicio con mancuerna guiado por la fisioterapeuta',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Rutinas de ejercicio diseñadas específicamente para tu recuperación y fortalecimiento.',
       benefit: 'Fortalecer tu cuerpo y prevenir que la lesión o el dolor vuelvan a aparecer.',
@@ -100,7 +137,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'rehabilitacion-postquirurgica',
       name: 'Rehabilitación Postquirúrgica',
-      icon: 'shield-check',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-electro.webp',
+        alt: 'Electrodos de estimulación aplicados en el pie de un paciente sobre una camilla',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Acompañamiento fisioterapéutico después de una cirugía, siguiendo tu proceso de recuperación paso a paso.',
       benefit: 'Recuperar tu funcionalidad de forma segura después de una operación.',
@@ -111,7 +155,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'presoterapia',
       name: 'Presoterapia',
-      icon: 'droplet',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-drenaje.webp',
+        alt: 'Fisioterapeuta realizando un masaje suave sobre la pierna de un paciente',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Terapia de compresión que estimula la circulación y ayuda a disminuir la inflamación.',
       benefit: 'Reducir la hinchazón y sentir las piernas o la zona tratada más ligeras.',
@@ -122,7 +173,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'descarga-muscular',
       name: 'Descarga Muscular',
-      icon: 'hand',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-descargas.webp',
+        alt: 'Paciente boca abajo con electrodos en la espalda mientras la fisioterapeuta le aplica masaje',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Masaje y técnicas específicas para liberar tensión muscular acumulada por esfuerzo o estrés físico.',
       benefit: 'Aliviar la tensión muscular y sentir más libertad de movimiento.',
@@ -133,7 +191,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'vendaje-neuromuscular',
       name: 'Vendaje Neuromuscular',
-      icon: 'shield-check',
+      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      image: {
+        src: '/images/service-puncion.webp',
+        alt: 'Paciente en camilla con electrodos aplicados sobre el hombro',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
       shortDescription:
         'Aplicación de vendaje terapéutico que da soporte a músculos y articulaciones durante tu recuperación o actividad.',
       benefit: 'Mantener soporte en la zona tratada mientras te mantienes activo.',
@@ -145,28 +210,8 @@ export const SITE_CONTENT: SiteContent = {
 
   identificationPoints: [
     'Haces deporte o actividad física con frecuencia y sientes molestias que no se van.',
-    'Tienes dolor musculoesquelético crónico que ya hace parte de tu día a día.',
     'Sufriste una lesión muscular, articular o ligamentaria.',
     'Estás en proceso de rehabilitación después de una cirugía.',
-  ],
-
-  careProcess: [
-    {
-      title: 'Valoración inicial',
-      description: 'Evaluamos tu caso a fondo para entender el origen del dolor o la lesión.',
-    },
-    {
-      title: 'Plan de tratamiento',
-      description: 'Diseñamos un plan personalizado según tu diagnóstico y tus objetivos.',
-    },
-    {
-      title: 'Sesiones',
-      description: 'Aplicamos el tratamiento con seguimiento de tu evolución en cada cita.',
-    },
-    {
-      title: 'Seguimiento',
-      description: 'Ajustamos el plan y acompañamos tu recuperación hasta el alta.',
-    },
   ],
 
   operation: {
@@ -186,30 +231,41 @@ export const SITE_CONTENT: SiteContent = {
       addressLine: 'Avenida 26 #51-101, Ciudadela Deportiva El Bosque',
       city: 'Neiva',
       country: 'Colombia',
-      googleMapsEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(FULL_ADDRESS)}&output=embed`,
       googleMapsDirectionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(FULL_ADDRESS)}`,
       coordinates: null,
-      photos: [],
+      // 4 fotos reales del consultorio + 2 temporales de referencia (reemplazar).
+      photos: [
+        { src: '/images/espacio-recepcion.webp', alt: 'Recepción del consultorio con el logo dorado de Yuli Fernanda Silva y sus diplomas en la pared', width: 800, height: 992 },
+        { src: '/images/espacio-ejercicio.webp', alt: 'Sala de ejercicio terapéutico con balones, bandas elásticas, pesas y cajón pliométrico', width: 800, height: 1281 },
+        { src: '/images/espacio-camilla.webp', alt: 'Cubículo de tratamiento con camilla y repisa de insumos terapéuticos', width: 800, height: 1172 },
+        { src: '/images/espacio-fachada.webp', alt: 'Entrada del consultorio con el aviso de Fisioterapia de Yuli Fernanda Silva', width: 800, height: 902 },
+        { src: '/images/espacio-demo-manual.webp', alt: 'Fisioterapeuta aplicando terapia manual a un paciente', width: 700, height: 525, isStockTemporary: true },
+        { src: '/images/espacio-demo-estiramiento.webp', alt: 'Sesión de estiramiento terapéutico en camilla', width: 800, height: 600, isStockTemporary: true },
+      ],
     },
   },
 
   differentiators: [
     {
+      icon: 'target',
       title: 'Tratamiento personalizado',
       description:
         'Cada paciente recibe una atención adaptada a su dolor, condición física y objetivos de recuperación.',
     },
     {
+      icon: 'activity',
       title: 'Atención enfocada en resultados funcionales',
       description:
         'No se trata solo de aliviar el dolor, sino de ayudarte a recuperar tu movilidad y volver a tus actividades cotidianas o deportivas.',
     },
     {
+      icon: 'hand',
       title: 'Técnicas y herramientas especializadas',
       description:
         'Integro terapia manual y recursos terapéuticos según las necesidades de cada paciente y los objetivos del tratamiento.',
     },
     {
+      icon: 'heart',
       title: 'Acompañamiento profesional y cercano',
       description:
         'Escucho a cada paciente, resuelvo sus dudas y lo oriento durante su proceso de rehabilitación.',
@@ -263,6 +319,22 @@ export const SITE_CONTENT: SiteContent = {
       answer: 'Escríbenos por WhatsApp contándonos brevemente tu caso y te confirmamos disponibilidad.',
     },
   ],
+
+  // BORRADOR: textos para que la cliente los revise.
+  contact: {
+    reasons: [
+      'Dolor o molestia',
+      'Lesión deportiva',
+      'Rehabilitación postquirúrgica',
+      'Descarga muscular',
+      'Otro',
+    ],
+    nextSteps: [
+      { title: 'Envías tus datos', description: 'Completa el formulario; solo toma un minuto.' },
+      { title: 'Te escribo por WhatsApp', description: 'Reviso tu mensaje y te contacto personalmente.' },
+      { title: 'Agendamos tu cita', description: 'Acordamos el día, la hora y la modalidad que mejor te funcionen.' },
+    ],
+  },
 
   social: {
     whatsappPhoneE164: '573144085632',

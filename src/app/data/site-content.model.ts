@@ -3,11 +3,11 @@ export interface SiteContent {
   credentials: ProfessionalCredentials;
   services: Service[];
   identificationPoints: string[];
-  careProcess: CareStep[];
   operation: OperationInfo;
   differentiators: Differentiator[];
   testimonials: Testimonial[];
   faq: FaqItem[];
+  contact: ContactContent;
   social: SocialChannels;
   seo: SeoConfig;
   legal: LegalInfo;
@@ -22,11 +22,7 @@ export interface SiteIdentity {
   bio: string;
   heroPhoto: MediaAsset;
   aboutPhoto: MediaAsset;
-}
-
-export interface CareStep {
-  title: string;
-  description: string;
+  painPhoto: MediaAsset;
 }
 
 export interface MediaAsset {
@@ -40,6 +36,7 @@ export interface MediaAsset {
 export interface Credential {
   label: string;
   detail?: string;
+  year?: string; // '2023', 'En curso'... ordena la línea de tiempo; sin año va al final
   verifiable?: boolean;
 }
 
@@ -57,7 +54,7 @@ export type ServiceModality = 'in_office' | 'home_visit' | 'virtual';
 export interface Service {
   id: string;
   name: string;
-  icon: string;
+  image: MediaAsset;
   shortDescription: string;
   benefit: string;
   sessionDurationMinutes: number | null;
@@ -75,7 +72,6 @@ export interface ClinicLocation {
   addressLine: string;
   city: string;
   country: string;
-  googleMapsEmbedUrl: string;
   googleMapsDirectionsUrl: string;
   coordinates: { lat: number; lng: number } | null;
   photos: MediaAsset[];
@@ -99,6 +95,13 @@ export interface Testimonial {
   source?: 'direct' | 'google';
 }
 
+// Formulario de contacto. Los motivos son GENERALES a propósito (Ley 1581):
+// nunca pedir diagnósticos ni historia clínica.
+export interface ContactContent {
+  reasons: string[];
+  nextSteps: { title: string; description: string }[];
+}
+
 export interface FaqItem {
   id: string;
   question: string;
@@ -106,6 +109,7 @@ export interface FaqItem {
 }
 
 export interface Differentiator {
+  icon: string; // nombre de IconName (shared/ui/icon)
   title: string;
   description: string;
 }

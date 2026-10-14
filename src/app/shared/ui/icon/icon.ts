@@ -18,7 +18,9 @@ export type IconName =
   | 'target'
   | 'hand'
   | 'droplet'
-  | 'home';
+  | 'home'
+  | 'heart'
+  | 'mail';
 
 @Component({
   imports: [],

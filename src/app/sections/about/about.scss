@@ -1,76 +1,410 @@
-.about {
+// ---------- 1. Presentación ----------
+.about-intro {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: var(--space-5);
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-6);
   align-items: center;
 }
 
-// Igual que en hero.scss: el contenedor usa el mismo ancho máximo que la foto
-// para que el halo escale siempre junto con la foto.
-.about__media {
+// El círculo degradado vive en el contenedor; el recorte (PNG sin fondo) se
+// apoya abajo y la cabeza sobresale del círculo, dando profundidad.
+.about-intro__portrait {
   position: relative;
-  max-width: 340px;
+  width: 100%;
+  max-width: 420px;
   margin-inline: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: var(--space-4);
 }
 
-.about__media::before {
+.about-intro__portrait::before {
   content: '';
   position: absolute;
-  inset: 8% 10% 0 10%;
-  background: radial-gradient(circle at 50% 35%, var(--color-accent-tint), transparent 70%);
+  left: 50%;
+  bottom: 0;
+  width: 96%;
+  aspect-ratio: 1;
+  translate: -50% 0;
   border-radius: 50%;
-  z-index: 0;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.85) 0%, transparent 45%),
+    linear-gradient(160deg, var(--color-primary-tint) 0%, var(--color-accent-tint) 55%, #e6c682 100%);
+  box-shadow: 0 0 0 10px var(--color-bg-alt);
 }
 
-.about__media img {
+// Mismo ancho que el círculo; el radio inferior enorme se reduce (proporcionalmente)
+// a la mitad del ancho, así la base del recorte sigue exactamente la curva del
+// círculo mientras la cabeza sobresale por arriba.
+.about-intro__clip {
   position: relative;
-  z-index: 1;
+  width: 96%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0 0 9999px 9999px;
+}
+
+.about-intro__clip img {
   display: block;
-  width: 100%;
+  width: 76%;
   height: auto;
 }
 
-.about__bio {
-  color: var(--color-text-soft);
-  line-height: 1.7;
-  margin-top: var(--space-2);
-}
-
-.about__years {
+.about-intro__bio {
   margin-top: var(--space-3);
-  font-weight: 700;
-  color: var(--color-cta);
+  color: var(--color-text-soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 62ch;
+  text-align: justify;
+  hyphens: auto;
 }
 
-.about__credentials {
-  display: flex;
-  flex-wrap: wrap;
+.about-intro__years {
+  display: inline-flex;
+  align-items: center;
   gap: var(--space-2);
   margin-top: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+  color: var(--color-text);
+  font-weight: 700;
 }
 
-.about__differentiators {
+.about-intro__years app-icon {
+  color: var(--color-accent);
+}
+
+// ---------- Títulos de las sub-secciones ----------
+// ---------- 2. Línea de tiempo ----------
+// Estilo editorial (sin tarjetas): año grande en Lora, hilo dorado con nodos
+// y el detalle tipográfico debajo. Los cursos del mismo año se agrupan.
+.about-timeline {
+  margin-top: var(--space-6);
+}
+
+.timeline {
+  --year-h: 2.4rem;
+  --dot: 14px;
+  --dot-gap: var(--space-3);
+  position: relative;
   list-style: none;
-  margin: var(--space-4) 0 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--items), minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+// Hilo continuo a la altura exacta de los nodos (alto fijo del año + separación).
+.timeline::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: calc(var(--year-h) + var(--dot-gap) + var(--dot) / 2 - 1px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary-tint), var(--color-primary) 20%, var(--color-accent) 80%, var(--color-primary-tint));
+}
+
+.timeline__year {
+  display: flex;
+  align-items: flex-end;
+  height: var(--year-h);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  padding-bottom: 0.2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  transition: color 0.25s ease;
+}
+
+.timeline__dot {
+  position: relative;
+  display: block;
+  width: var(--dot);
+  height: var(--dot);
+  margin-block: var(--dot-gap);
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.timeline__group:hover .timeline__dot {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+.timeline__group:hover .timeline__year {
+  color: var(--color-accent);
+}
+
+// Lo que está en curso se marca con un nodo lleno que "late".
+.timeline__group.is-current .timeline__dot {
+  background: var(--color-cta);
+  border-color: var(--color-cta);
+}
+
+.timeline__group.is-current .timeline__dot::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  animation: timeline-pulse 2.4s ease-out infinite;
+}
+
+@keyframes timeline-pulse {
+  from {
+    opacity: 0.9;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+.timeline__items {
+  list-style: none;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.about__differentiators li {
-  color: var(--color-text-soft);
-  line-height: 1.6;
-  padding-left: var(--space-3);
-  border-left: 2px solid var(--color-primary);
+.timeline__items li + li {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
 }
 
-.about__differentiators strong {
+.timeline__items strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+.timeline__items span {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-soft);
+}
+
+// ---------- 3. Enfoque ----------
+// Panel crema claro: eyebrow arriba y los 4 puntos en fila, separados por
+// líneas finas. Los iconos repiten el círculo degradado del retrato.
+.about-values {
+  margin-top: var(--space-7);
+  padding: var(--space-6);
+  border-radius: calc(var(--radius-card) * 1.5);
+  background: var(--color-bg-alt);
+}
+
+.about-values__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: var(--space-4);
+}
+
+.about-values__grid li {
+  padding: var(--space-2) var(--space-4);
+}
+
+.about-values__grid li:first-child {
+  padding-left: 0;
+}
+
+.about-values__grid li:last-child {
+  padding-right: 0;
+}
+
+// Línea vertical fina entre puntos.
+.about-values__grid li + li {
+  border-left: 1px solid var(--color-border);
+}
+
+.about-values__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--color-primary-tint), var(--color-accent-tint) 60%, #e6c682);
+  color: var(--color-accent);
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+// Aro dorado fino que se expande suavemente alrededor del círculo.
+.about-values__icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--color-primary);
+  opacity: 0;
+  scale: 0.85;
+  transition:
+    opacity 0.4s ease,
+    scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-values__icon app-icon {
+  display: inline-flex;
+  transition: scale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+// Hover sobre todo el punto (no solo el icono): el círculo flota, gana un
+// brillo cálido, aparece el aro y el icono crece con un leve rebote.
+.about-values__grid li:hover .about-values__icon {
+  translate: 0 -4px;
+  box-shadow: 0 10px 22px -10px rgba(173, 122, 0, 0.55);
+}
+
+.about-values__grid li:hover .about-values__icon::after {
+  opacity: 0.6;
+  scale: 1.22;
+}
+
+.about-values__grid li:hover .about-values__icon app-icon {
+  scale: 1.12;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-values__icon,
+  .about-values__icon::after,
+  .about-values__icon app-icon {
+    transition: none;
+  }
+}
+
+.about-values h3 {
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.3;
   color: var(--color-text);
 }
 
-@media (max-width: 820px) {
-  .about {
+.about-values p {
+  margin-top: var(--space-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-soft);
+}
+
+// ---------- Responsive ----------
+@media (max-width: 960px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .about-intro__portrait {
+    max-width: 320px;
+  }
+
+  // Línea de tiempo vertical: hilo a la izquierda, nodo junto a cada año.
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    inset-inline: auto;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--color-primary-tint), var(--color-primary) 15%, var(--color-accent) 85%, var(--color-primary-tint));
+  }
+
+  .timeline__group {
+    position: relative;
+  }
+
+  .timeline__year {
+    height: auto;
+    font-size: 1.2rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline__dot {
+    position: absolute;
+    left: -32px;
+    top: 0.6rem;
+    margin: 0;
+  }
+
+  .about-values {
+    padding: var(--space-5);
+  }
+
+  // Tablet: 2x2, sin línea a la izquierda al inicio de cada fila.
+  .about-values__grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-4);
+  }
+
+  .about-values__grid li:nth-child(odd) {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-values {
+    padding: var(--space-4);
+  }
+
+  .about-values__grid {
     grid-template-columns: 1fr;
   }
+
+  // Móvil: uno debajo de otro, separados por línea horizontal.
+  .about-values__grid li,
+  .about-values__grid li + li {
+    border-left: none;
+    padding: var(--space-4) 0;
+  }
+
+  .about-values__grid li + li {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__group.is-current .timeline__dot::after {
+    animation: none;
+  }
+}
+
+// El título vive dentro de <app-section-header> (otro componente), por eso ::ng-deep.
+.about-intro__copy ::ng-deep h2 {
+  font-size: clamp(2.4rem, 1.8rem + 2.4vw, 3.4rem);
+  line-height: 1.1;
+}
+
+// Misma separación (eyebrow → nombre) que (nombre → párrafo).
+.about-intro__copy ::ng-deep .section-header {
+  gap: var(--space-3);
+  margin-bottom: 0;
 }

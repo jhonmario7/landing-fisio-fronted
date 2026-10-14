@@ -1,0 +1,24 @@
+@if (photos.length) {
+  <section class="section alt" id="espacio">
+    <div class="wrap">
+      <app-section-header
+        eyebrow="Nuestro espacio"
+        title="Un consultorio pensado para tu tranquilidad"
+        subtitle="Un ambiente cálido y equipado, diseñado para que cada sesión sea un momento de cuidado real."
+        align="center"
+      />
+      <div class="space-grid" appRevealOnScroll>
+        @for (photo of photos; track photo.src) {
+          <figure>
+            <img
+              [ngSrc]="photo.src"
+              [alt]="photo.alt"
+              [width]="photo.width"
+              [height]="photo.height"
+            />
+          </figure>
+        }
+      </div>
+    </div>
+  </section>
+}

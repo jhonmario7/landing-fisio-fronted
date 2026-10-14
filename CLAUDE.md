@@ -21,7 +21,7 @@ Todo el texto, servicios, horarios, teléfono y redes vive en `src/app/data/site
 src/app/
 ├── core/       → seo.service.ts (Title/Meta + JSON-LD), whatsapp-link.util.ts
 ├── shared/     → ui/ (button, section-header, icon, credential-badge, whatsapp-fab, accordion), directives/ (reveal-on-scroll)
-├── sections/   → header, hero, pain-points, services, about, process, testimonials, location, faq, contact, footer
+├── sections/   → header, hero, pain-points, services, about, space, testimonials, location, faq, contact, footer
 ├── pages/      → home (orquesta sections), privacy-policy
 └── data/       → site-content.model.ts, site-content.ts
 ```
@@ -64,9 +64,9 @@ src/app/
 
 **Regla de uso de color**: los dorados (`--color-primary`, `--color-accent`) son para iconos, bordes, fondos-con-tint o texto grande/bold — nunca texto normal ni botones con texto blanco (fallan AA 4.5:1 en esa combinación). El único color apto como fondo de botón/FAB con texto blanco es `--color-cta` (chocolate) — así es como la propia cliente usa su marca en la tarjeta de presentación (panel chocolate + dorado/blanco). El texto siempre usa `--color-text` / `--color-text-soft`.
 
-**Tipografía**: `--font-display: 'Poppins'` + `--font-sans: 'Manrope'`, ambas cargadas en `index.html` con `font-display: swap`.
+**Tipografía**: `--font-display: 'Lora'` + `--font-sans: 'Carlito'`, ambas cargadas en `index.html` con `font-display: swap`. Son los equivalentes web del brandbook real de Yuli (Book Antiqua Bold + Calibri Light).
 
-⚠️ **Decisión explícita del usuario que contradice el brandbook** (14 oct 2026): el brandbook real de Yuli especifica Book Antiqua Bold + Calibri Light (para las que ya habíamos elegido los equivalentes web Lora + Carlito). El usuario vio la tipografía Poppins/Manrope en una landing de la competencia (M&M Fisioterapia) y pidió explícitamente adoptarla en su lugar, aun sabiendo que no coincide con el brandbook de Yuli. No revertir a Lora/Carlito sin que el usuario lo pida — esta fue una elección consciente, no un error.
+Historial: el 14 oct 2026 se probó brevemente Poppins/Manrope (copiando el look de la competencia, M&M Fisioterapia) por pedido explícito del usuario. El mismo día, al verlo aplicado, el usuario decidió que Lora/Carlito encaja mejor con la marca real de Yuli y pidió revertir. Se mantiene Lora/Carlito salvo que el usuario pida lo contrario de nuevo.
 
 ## Comandos
 

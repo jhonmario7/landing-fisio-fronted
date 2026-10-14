@@ -1,9 +1,14 @@
 <section class="section" id="faq">
   <div class="wrap faq" appRevealOnScroll>
-    <app-section-header eyebrow="Dudas frecuentes" title="Preguntas frecuentes" />
+    <app-section-header eyebrow="Dudas frecuentes" title="Preguntas frecuentes" align="center" />
 
     @if (content.faq.length) {
-      <app-accordion [items]="content.faq" />
+      <!-- Dos acordeones independientes (no una grilla de un solo acordeón): al
+           abrir una respuesta solo crece su columna y la otra no deja huecos. -->
+      <div class="faq-columns">
+        <app-accordion [items]="left" />
+        <app-accordion [items]="right" />
+      </div>
     } @else {
       <p class="faq-pending">[PENDIENTE: preguntas frecuentes de la fisioterapeuta]</p>
     }

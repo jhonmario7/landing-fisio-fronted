@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { buildWhatsAppUrl } from '../../core/whatsapp-link.util';
 import { OperatingHoursRange } from '../../data/site-content.model';
 import { SITE_CONTENT } from '../../data/site-content';
 import { RevealOnScroll } from '../../shared/directives/reveal-on-scroll';
 import { Button } from '../../shared/ui/button/button';
+import { Icon } from '../../shared/ui/icon/icon';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 
 const DAY_LABELS: Record<OperatingHoursRange['day'], string> = {
@@ -17,25 +18,20 @@ const DAY_LABELS: Record<OperatingHoursRange['day'], string> = {
 };
 
 @Component({
-  imports: [Button, SectionHeader, RevealOnScroll],
+  imports: [Button, Icon, SectionHeader, RevealOnScroll],
   selector: 'app-location',
   styleUrl: './location.scss',
   templateUrl: './location.html',
 })
 export class Location {
-  private readonly sanitizer = inject(DomSanitizer);
-
   protected readonly content = SITE_CONTENT;
+  protected readonly location = this.content.operation.location;
+  protected readonly homeVisits = this.content.operation.modalities.includes('home_visit');
 
-  protected readonly mapEmbedUrl: SafeResourceUrl | null = this.content.operation.location
-    .googleMapsEmbedUrl.startsWith('https://')
-    ? this.sanitizer.bypassSecurityTrustResourceUrl(
-        this.content.operation.location.googleMapsEmbedUrl,
-      )
-    : null;
-
-  protected readonly hasDirectionsUrl = this.content.operation.location.googleMapsDirectionsUrl
-    .startsWith('https://');
+  protected readonly whatsappHref = buildWhatsAppUrl(
+    this.content.social.whatsappPhoneE164,
+    'Hola, quiero agendar una cita en el consultorio.',
+  );
 
   dayLabel(day: OperatingHoursRange['day']): string {
     return DAY_LABELS[day];
