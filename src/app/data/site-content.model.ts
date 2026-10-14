@@ -17,9 +17,9 @@ export interface SiteIdentity {
   businessName: string;
   professionalName: string;
   tagline: string;
+  brandTagline: string;
   subtitle: string;
   bio: string;
-  logoUrl?: string;
   heroPhoto: MediaAsset;
   aboutPhoto: MediaAsset;
 }

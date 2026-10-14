@@ -1,26 +1,23 @@
 <header class="site-header">
   <div class="wrap site-header__row">
     <a class="brand" href="#top" (click)="closeMenu()">
-      @if (content.identity.logoUrl) {
-        <img class="brand__logo" [src]="content.identity.logoUrl" [alt]="content.identity.businessName" />
-      } @else {
-        <span>{{ content.identity.businessName }}</span>
-      }
+      <img class="brand__icon" src="/images/icon.webp" alt="" />
+      <span class="brand__text">
+        <strong>{{ content.identity.businessName }}</strong>
+        <small>{{ content.identity.brandTagline }}</small>
+      </span>
     </a>
 
     <nav class="nav-links" [class.is-open]="isMenuOpen()">
       @for (link of navLinks; track link.fragment) {
         <a [href]="'#' + link.fragment" (click)="closeMenu()">{{ link.label }}</a>
       }
-      <app-button
-        variant="primary"
-        size="sm"
-        [href]="'tel:+' + content.social.whatsappPhoneE164"
-        class="nav-links__cta"
-      >
-        Agenda tu valoración
-      </app-button>
     </nav>
+
+    <app-button variant="primary" size="sm" [href]="whatsappHref" target="_blank" class="header-cta">
+      <app-icon name="whatsapp" [size]="16" />
+      <span class="header-cta__label">{{ content.social.phoneDisplay }}</span>
+    </app-button>
 
     <button
       class="menu-toggle"

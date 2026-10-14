@@ -17,7 +17,11 @@
       </ul>
 
       @if (hasDirectionsUrl) {
-        <app-button variant="primary" [href]="content.operation.location.googleMapsDirectionsUrl">
+        <app-button
+          variant="primary"
+          [href]="content.operation.location.googleMapsDirectionsUrl"
+          target="_blank"
+        >
           Cómo llegar
         </app-button>
       } @else {

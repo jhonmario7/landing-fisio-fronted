@@ -15,10 +15,10 @@ export const SITE_CONTENT: SiteContent = {
     businessName: 'Yuli Fernanda Silva',
     professionalName: 'Yuli Fernanda Silva',
     tagline: 'Vuelve a moverte sin dolor',
+    brandTagline: 'Fisioterapia Integral Personalizada',
     subtitle:
       'Fisioterapia personalizada en Neiva, con valoración integral y seguimiento de tu evolución.',
     bio: 'Soy fisioterapeuta egresada de la FUMC, sede Neiva, en 2024, y actualmente curso mi especialización en Terapia Manual y Ortopedia en la Universidad de la Sabana. Me he formado también en actividad deportiva y rehabilitación física, prevención de lesiones y readaptación funcional del deportista lesionado, porque quiero ofrecerte mucho más que un alivio temporal: busco ayudarte a recuperar tu movilidad y volver a lo que te gusta hacer, ya sea entrenar, trabajar o simplemente moverte sin dolor. En cada sesión combino terapia manual con las herramientas terapéuticas que mejor se ajusten a tu caso, y te acompaño de cerca durante todo tu proceso de recuperación.', // BORRADOR
-    logoUrl: '/images/logo-dark.svg',
     heroPhoto: {
       src: '/images/hero.webp',
       alt: 'Yuli Fernanda Silva, fisioterapeuta, sonriendo con su uniforme de trabajo',

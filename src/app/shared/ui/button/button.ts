@@ -17,4 +17,5 @@ export class Button {
   readonly disabled = input(false);
   readonly type = input<'button' | 'submit'>('button');
   readonly ariaLabel = input<string | null>(null);
+  readonly target = input<'_self' | '_blank'>('_self');
 }
