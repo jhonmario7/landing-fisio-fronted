@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Seo } from '../../core/seo';
 import { SITE_CONTENT } from '../../data/site-content';
 import { About } from '../../sections/about/about';
-import { Contact } from '../../sections/contact/contact';
+// import { Contact } from '../../sections/contact/contact'; // oculto temporalmente, ver home.html
 import { Faq } from '../../sections/faq/faq';
 import { Footer } from '../../sections/footer/footer';
 import { Header } from '../../sections/header/header';
@@ -24,7 +24,7 @@ import { Testimonials } from '../../sections/testimonials/testimonials';
     Testimonials,
     Location,
     Faq,
-    Contact,
+    // Contact,
     Footer,
   ],
   selector: 'app-home',

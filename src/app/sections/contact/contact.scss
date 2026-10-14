@@ -10,25 +10,26 @@
 }
 
 // ---------- Panel ----------
+// Degradado dorado claro (mismo del círculo del retrato en "Sobre mí") con un
+// brillo blanco arriba: cálido y liviano, coherente con el resto de la landing.
 .contact__panel {
   padding: var(--space-6) var(--space-5);
   background:
-    radial-gradient(circle at 100% 0%, rgba(195, 152, 0, 0.25), transparent 50%),
-    var(--color-cta);
-  color: #fff;
+    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.85), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(195, 152, 0, 0.18), transparent 55%),
+    linear-gradient(160deg, var(--color-bg-alt) 0%, var(--color-primary-tint) 45%, var(--color-accent-tint) 100%);
+  color: var(--color-text);
 }
 
-.contact__panel h2 {
-  margin-top: var(--space-3);
-  font-size: clamp(1.6rem, 1.25rem + 1vw, 2.1rem);
-  line-height: 1.2;
-  color: #fff;
+.contact__panel .eyebrow {
+  color: var(--color-accent);
 }
 
 .contact__lead {
   margin-top: var(--space-3);
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text);
 }
 
 .contact__steps {
@@ -45,7 +46,6 @@
   gap: var(--space-3);
 }
 
-// Dorado sobre chocolate ~6:1, apto para numeral en negrita.
 .contact__step-num {
   flex-shrink: 0;
   display: inline-flex;
@@ -54,28 +54,29 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(195, 152, 0, 0.6);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-primary);
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .contact__steps strong {
   display: block;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .contact__steps span {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--color-text-soft);
 }
 
 .contact__channels {
   list-style: none;
   margin: var(--space-5) 0 0;
   padding: var(--space-4) 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(38, 23, 15, 0.12);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -86,15 +87,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-soft);
 }
 
 .contact__channels app-icon {
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .contact__channels a {
-  color: #fff;
+  color: var(--color-text);
   font-weight: 700;
   text-decoration: none;
 }

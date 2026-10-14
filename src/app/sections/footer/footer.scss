@@ -87,6 +87,7 @@
 .site-footer__bottom {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: var(--space-5);
@@ -108,5 +109,126 @@
   .site-footer__row {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+// ---------- Botón flotante "Volver arriba" ----------
+// Se apila encima del FAB de WhatsApp (56px + separación).
+.back-to-top {
+  position: fixed;
+  right: var(--space-4);
+  bottom: calc(var(--space-4) + 56px + 14px);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  // Oculto: más abajo, pequeño y transparente; no clicable ni enfocable.
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 24px;
+  scale: 0.6;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    translate 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    visibility 0s linear 0.6s;
+}
+
+// Visible: entra subiendo con un rebote elástico.
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  scale: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.back-to-top__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--color-primary-tint), var(--color-accent-tint) 60%, #e6c682);
+  color: var(--color-cta);
+  box-shadow: 0 10px 24px -8px rgba(173, 122, 0, 0.55);
+  transition:
+    translate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+// Aro dorado que se expande al pasar el mouse.
+// chevron-down girado = flecha arriba (se gira el icono, no el botón,
+// para que el translate del hover vaya en la dirección natural).
+.back-to-top__btn app-icon {
+  display: inline-flex;
+  rotate: 180deg;
+}
+
+.back-to-top__btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--color-primary);
+  opacity: 0;
+  scale: 0.9;
+  transition:
+    opacity 0.4s ease,
+    scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+// Etiqueta que se desliza desde el botón al pasar el mouse / enfocar.
+.back-to-top__label {
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-cta);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  translate: 12px 0;
+  transition:
+    opacity 0.3s ease,
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.back-to-top:hover .back-to-top__btn,
+.back-to-top:focus-visible .back-to-top__btn {
+  translate: 0 -4px;
+  box-shadow: 0 16px 30px -10px rgba(173, 122, 0, 0.7);
+}
+
+.back-to-top:hover .back-to-top__btn::after,
+.back-to-top:focus-visible .back-to-top__btn::after {
+  opacity: 0.7;
+  scale: 1.25;
+}
+
+.back-to-top:hover .back-to-top__label,
+.back-to-top:focus-visible .back-to-top__label {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.back-to-top:focus-visible {
+  outline: none;
+}
+
+.back-to-top:focus-visible .back-to-top__btn {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 3px;
+}
+
+// En táctil no hay hover: la etiqueta no aporta y taparía contenido.
+@media (hover: none) {
+  .back-to-top__label {
+    display: none;
   }
 }

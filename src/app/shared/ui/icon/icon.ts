@@ -20,7 +20,8 @@ export type IconName =
   | 'droplet'
   | 'home'
   | 'heart'
-  | 'mail';
+  | 'mail'
+  | 'arrow-right';
 
 @Component({
   imports: [],

@@ -47,4 +47,11 @@
       <a [href]="content.legal.dataPolicyUrl">Política de tratamiento de datos</a>
     </div>
   </div>
+
+  <!-- Botón flotante sobre el de WhatsApp: aparece cuando el footer entra en pantalla.
+       Ancla nativa al hero (id="top"); el scroll suave lo da html { scroll-behavior }. -->
+  <a class="back-to-top" href="#top" [class.is-visible]="atEnd()" [attr.tabindex]="atEnd() ? null : -1" [attr.aria-hidden]="!atEnd()">
+    <span class="back-to-top__label">Volver arriba</span>
+    <span class="back-to-top__btn"><app-icon name="chevron-down" [size]="22" /></span>
+  </a>
 </footer>

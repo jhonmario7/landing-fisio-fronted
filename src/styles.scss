@@ -48,8 +48,17 @@
   box-sizing: border-box;
 }
 
+// scroll-padding = alto del header sticky: los anclas (#servicios, #faq…) no quedan
+// tapados por el header y #top (hero) aterriza en scrollY 0.
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 111px;
+}
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 87px;
+  }
 }
 
 body {
