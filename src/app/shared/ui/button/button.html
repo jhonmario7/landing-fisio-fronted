@@ -1,10 +1,14 @@
+<ng-template #projected>
+  <ng-content />
+</ng-template>
+
 @if (href() && !disabled()) {
   <a
     class="btn btn-{{ variant() }} btn-{{ size() }}"
     [href]="href()"
     [attr.aria-label]="ariaLabel()"
   >
-    <ng-content />
+    <ng-container [ngTemplateOutlet]="projected" />
   </a>
 } @else {
   <button
@@ -13,6 +17,6 @@
     [disabled]="disabled()"
     [attr.aria-label]="ariaLabel()"
   >
-    <ng-content />
+    <ng-container [ngTemplateOutlet]="projected" />
   </button>
 }

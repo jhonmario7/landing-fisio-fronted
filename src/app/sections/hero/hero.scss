@@ -26,13 +26,27 @@
   margin-top: var(--space-4);
 }
 
+.hero__media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__media::before {
+  content: '';
+  position: absolute;
+  inset: 8% 10% 0 10%;
+  background: radial-gradient(circle at 50% 35%, var(--color-primary-tint), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
 .hero__media img {
+  position: relative;
+  z-index: 1;
   width: 100%;
+  max-width: 420px;
   height: auto;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  object-fit: cover;
-  aspect-ratio: 4 / 5;
 }
 
 @media (max-width: 820px) {

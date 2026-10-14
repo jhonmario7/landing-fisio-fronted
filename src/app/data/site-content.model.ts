@@ -113,6 +113,7 @@ export interface Differentiator {
 export interface SocialChannels {
   whatsappPhoneE164: string;
   phoneDisplay: string;
+  email?: string;
   instagramUrl?: string;
   facebookUrl?: string;
   tiktokUrl?: string;
@@ -153,7 +154,13 @@ export interface PhysiotherapySchema {
   sameAs: string[];
 }
 
+export interface LegalPolicySection {
+  heading: string;
+  paragraphs: string[];
+}
+
 export interface LegalInfo {
   dataPolicyUrl: string;
   dataPolicyLastUpdated: string;
+  dataPolicySections: LegalPolicySection[];
 }

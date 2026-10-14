@@ -1,10 +1,11 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, input } from '@angular/core';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonSize = 'md' | 'sm';
 
 @Component({
-  imports: [],
+  imports: [NgTemplateOutlet],
   selector: 'app-button',
   styleUrl: './button.scss',
   templateUrl: './button.html',

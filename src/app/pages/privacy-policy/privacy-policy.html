@@ -1,8 +1,13 @@
-<main>
+<main class="policy wrap">
   <h1>Política de tratamiento de datos personales</h1>
-  <p>
-    [PENDIENTE: confirmar si existe una política ya redactada o si se debe redactar una base
-    genérica conforme a la Ley 1581 de 2012 para revisión legal posterior — ver docs/PLAN.md,
-    Fase 0, punto 30.]
-  </p>
+  <p class="policy__updated">Última actualización: {{ content.legal.dataPolicyLastUpdated }}</p>
+
+  @for (section of content.legal.dataPolicySections; track section.heading) {
+    <section class="policy__section">
+      <h2>{{ section.heading }}</h2>
+      @for (paragraph of section.paragraphs; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+    </section>
+  }
 </main>

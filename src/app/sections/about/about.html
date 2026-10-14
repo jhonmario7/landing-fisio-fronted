@@ -25,6 +25,17 @@
           }
         </div>
       }
+
+      @if (content.differentiators.length) {
+        <ul class="about__differentiators">
+          @for (item of content.differentiators; track item.title) {
+            <li>
+              <strong>{{ item.title }}.</strong>
+              {{ item.description }}
+            </li>
+          }
+        </ul>
+      }
     </div>
   </div>
 </section>

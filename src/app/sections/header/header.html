@@ -1,7 +1,11 @@
 <header class="site-header">
   <div class="wrap site-header__row">
     <a class="brand" href="#top" (click)="closeMenu()">
-      {{ content.identity.businessName }}
+      @if (content.identity.logoUrl) {
+        <img class="brand__logo" [src]="content.identity.logoUrl" [alt]="content.identity.businessName" />
+      } @else {
+        <span>{{ content.identity.businessName }}</span>
+      }
     </a>
 
     <nav class="nav-links" [class.is-open]="isMenuOpen()">

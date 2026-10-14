@@ -16,11 +16,18 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
   color: var(--color-text);
+}
+
+.brand__logo {
+  height: 64px;
+  width: auto;
 }
 
 .nav-links {
