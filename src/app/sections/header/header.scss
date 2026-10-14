@@ -12,7 +12,7 @@
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: var(--space-5);
-  padding-block: 26px;
+  padding-block: 20px;
 }
 
 .brand {
@@ -78,7 +78,7 @@
   padding: var(--space-2);
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1080px) {
   .site-header__row {
     grid-template-columns: auto auto auto;
   }

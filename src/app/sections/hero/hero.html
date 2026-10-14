@@ -1,10 +1,16 @@
 <section class="hero wrap" id="top">
   <div class="hero__copy">
+    <span class="eyebrow">{{ eyebrow }}</span>
     <h1>{{ content.identity.tagline }}</h1>
     <p class="hero__subtitle">{{ content.identity.subtitle }}</p>
     <div class="hero__actions">
       <app-button variant="primary" [href]="whatsappHref" target="_blank">Agenda por WhatsApp</app-button>
       <app-button variant="ghost" href="#servicios">Ver servicios</app-button>
+      <span class="hero__note">Respuesta inmediata</span>
+    </div>
+    <div class="hero__trust">
+      <span><app-icon name="check" [size]="16" />Consultorio, domicilio y virtual</span>
+      <span><app-icon name="check" [size]="16" />Atención personalizada</span>
     </div>
   </div>
   <div class="hero__media">
@@ -15,5 +21,14 @@
       [height]="content.identity.heroPhoto.height"
       priority
     />
+    @if (content.credentials.yearsOfExperience !== null) {
+      <div class="hero__stat">
+        <app-icon name="shield-check" [size]="18" />
+        <div>
+          <strong>{{ content.credentials.yearsOfExperience }} años</strong>
+          <span>de experiencia</span>
+        </div>
+      </div>
+    }
   </div>
 </section>

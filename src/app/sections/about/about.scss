@@ -5,10 +5,12 @@
   align-items: center;
 }
 
+// Igual que en hero.scss: el contenedor usa el mismo ancho máximo que la foto
+// para que el halo escale siempre junto con la foto.
 .about__media {
   position: relative;
-  display: flex;
-  justify-content: center;
+  max-width: 340px;
+  margin-inline: auto;
 }
 
 .about__media::before {
@@ -23,8 +25,8 @@
 .about__media img {
   position: relative;
   z-index: 1;
+  display: block;
   width: 100%;
-  max-width: 380px;
   height: auto;
 }
 
