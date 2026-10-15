@@ -95,7 +95,7 @@ export class Contact {
 
     const { name, phone, reason, modality, details } = this.model();
     const message = [
-      'Hola Yuli, quiero agendar una valoración.',
+      'Hola Yuli, quiero agendar una cita.',
       `• Nombre: ${name}`,
       `• Teléfono: ${phone}`,
       `• Motivo: ${reason}`,

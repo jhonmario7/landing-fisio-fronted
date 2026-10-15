@@ -10,7 +10,7 @@ import { Icon } from '../icon/icon';
 })
 export class WhatsappFab {
   readonly phoneE164 = input.required<string>();
-  readonly message = input('Hola, quisiera agendar una valoración.');
+  readonly message = input('Hola Yuli, quisiera agendar una cita.');
 
   readonly href = computed(() => buildWhatsAppUrl(this.phoneE164(), this.message()));
 }

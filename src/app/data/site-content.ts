@@ -43,6 +43,7 @@ export const SITE_CONTENT: SiteContent = {
 
   credentials: {
     yearsOfExperience: 2,
+    patientsServed: 100,
     education: [
       { label: 'Fisioterapeuta — FUMC, sede Neiva', detail: 'Graduada', year: '2024', verifiable: true },
     ],

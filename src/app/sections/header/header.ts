@@ -29,7 +29,7 @@ export class Header {
 
   protected readonly whatsappHref = buildWhatsAppUrl(
     this.content.social.whatsappPhoneE164,
-    'Hola, quisiera agendar una valoración.',
+    'Hola Yuli, quisiera agendar una cita.',
   );
 
   toggleMenu(): void {

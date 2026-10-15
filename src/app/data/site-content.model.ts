@@ -42,6 +42,7 @@ export interface Credential {
 
 export interface ProfessionalCredentials {
   yearsOfExperience: number | null;
+  patientsServed: number | null;
   education: Credential[];
   specializations: Credential[];
   professionalCardNumber?: string | null;

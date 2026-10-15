@@ -16,7 +16,7 @@ export class Hero {
 
   protected readonly whatsappHref = buildWhatsAppUrl(
     this.content.social.whatsappPhoneE164,
-    'Hola, quisiera agendar una valoración.',
+    'Hola Yuli, quisiera agendar una cita.',
   );
 
   protected readonly eyebrow = `Fisioterapia integral · ${this.content.operation.location.city}`;

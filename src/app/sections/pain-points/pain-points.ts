@@ -18,6 +18,6 @@ export class PainPoints {
 
   protected readonly whatsappHref = buildWhatsAppUrl(
     this.content.social.whatsappPhoneE164,
-    'Hola, no quiero esperar a que empeore. Quisiera agendar una valoración.',
+    'Hola Yuli, no quiero esperar a que empeore. Quisiera agendar una cita.',
   );
 }

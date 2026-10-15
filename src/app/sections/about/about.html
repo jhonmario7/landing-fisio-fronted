@@ -15,10 +15,10 @@
       <div class="about-intro__copy">
         <app-section-header eyebrow="Sobre mí" [title]="content.identity.professionalName" />
         <p class="about-intro__bio">{{ content.identity.bio }}</p>
-        @if (content.credentials.yearsOfExperience !== null) {
+        @if (content.credentials.patientsServed !== null) {
           <p class="about-intro__years">
             <app-icon name="shield-check" [size]="18" />
-            +{{ content.credentials.yearsOfExperience }} años de experiencia
+            +{{ content.credentials.patientsServed }} clientes atendidos
           </p>
         }
       </div>
