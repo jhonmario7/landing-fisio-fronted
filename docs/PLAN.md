@@ -52,7 +52,7 @@ La fuente de verdad del tipado es `src/app/data/site-content.model.ts` (no se du
 | **2 — Sistema de diseño** | Tokens SCSS + componentes base | ✅ Hecho con la marca real (dorado/chocolate, Lora/Carlito). |
 | **3 — Secciones** | 11 secciones consumiendo `SITE_CONTENT` | ✅ Hecho: 1 solo `<h1>`, mapa SVG ilustrado + "Cómo llegar", FAB WhatsApp, botón "Volver arriba", `NgOptimizedImage` con `priority` solo en el hero, `prefers-reduced-motion` respetado. |
 | **4 — Contacto** | WhatsApp sin backend | ✅ Implementado (Signal Forms + checkbox Ley 1581) pero **el formulario está oculto** desde el 14 oct a pedido del usuario (comentado en `home.html`/`home.ts`, se rediseñará). El contacto hoy es por los CTA/FAB de WhatsApp. |
-| **5 — Despliegue de vista previa** | URL pública **no indexable** para que la cliente revise | ⏳ **Fase actual** (detalle abajo). |
+| **5 — Despliegue de vista previa** | URL pública **no indexable** para que la cliente revise | ✅ Publicado el 15 oct 2026 en `https://yuli-fisioterapia.pages.dev` (Cloudflare Pages, flujo "legacy Pages", conectado a GitHub). Verificado: ambas rutas 200, `noindex`, `robots.txt` `Disallow: /`, JSON-LD, 1 `<h1>`, sin errores de consola ni scroll horizontal en 375px. Falta solo ver la primera preview de `develop` (se crea con el próximo push a esa rama). |
 | **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | Pendiente. Se movió después del deploy: medir sobre la preview en Cloudflare es más fiel que sobre `localhost`. |
 | **7 — Producción** | Dominio, correo, analítica, indexación | Pendiente (bloqueantes listados abajo). |
 
