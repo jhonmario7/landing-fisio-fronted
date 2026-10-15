@@ -144,6 +144,7 @@ export interface PhysiotherapySchema {
   medicalSpecialty: 'PhysicalTherapy';
   name: string;
   image: string;
+  url?: string;
   telephone: string;
   email?: string;
   address: {

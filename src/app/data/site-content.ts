@@ -7,6 +7,9 @@ import { SiteContent } from './site-content.model';
 // de servicios y FAQ son BORRADOR redactado por Claude para que ella los revise sobre un prototipo
 // visual y pida cambios — no son hechos inventados sobre ella, son copy de marketing a su criterio.
 
+// Vista previa en Cloudflare Pages; cambiar por el dominio definitivo en Fase 7 (sin "/" final).
+const SITE_URL = 'https://yuli-fisioterapia.pages.dev';
+
 const FULL_ADDRESS =
   'Avenida 26 #51-101, Ciudadela Deportiva El Bosque, Neiva, Huila, Colombia';
 
@@ -397,13 +400,13 @@ export const SITE_CONTENT: SiteContent = {
     defaultTitle: 'Yuli Fernanda Silva | Fisioterapia Integral en Neiva',
     defaultDescription:
       'Fisioterapia integral personalizada en Neiva, Huila. Atención en consultorio, a domicilio o virtual. Agenda tu valoración por WhatsApp.',
-    canonicalUrl: '[PENDIENTE: dominio definitivo]',
+    canonicalUrl: SITE_URL,
+    // [PENDIENTE: imagen horizontal 1200x630 para compartir en redes; mientras tanto, la foto del hero]
     ogImage: {
-      src: '/images/og-image-placeholder.jpg',
-      alt: '[PENDIENTE: imagen horizontal para compartir en redes, 1200x630]',
-      width: 1200,
-      height: 630,
-      isStockTemporary: true,
+      src: `${SITE_URL}/images/hero.webp`,
+      alt: 'Yuli Fernanda Silva, fisioterapeuta, sonriendo con su uniforme de trabajo',
+      width: 787,
+      height: 1231,
     },
     keywords: ['fisioterapeuta en Neiva', 'fisioterapia Neiva Huila', 'rehabilitación deportiva Neiva'],
     jsonLd: {
@@ -411,7 +414,8 @@ export const SITE_CONTENT: SiteContent = {
       '@type': 'MedicalBusiness',
       medicalSpecialty: 'PhysicalTherapy',
       name: 'Yuli Fernanda Silva',
-      image: '[PENDIENTE: URL de imagen]',
+      image: `${SITE_URL}/images/hero.webp`,
+      url: SITE_URL,
       telephone: '+573144085632',
       email: 'yulifernanda28@hotmail.com',
       address: {
