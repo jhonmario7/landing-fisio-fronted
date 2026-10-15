@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { buildWhatsAppUrl } from '../../core/whatsapp-link.util';
 import { SITE_CONTENT } from '../../data/site-content';
@@ -6,7 +7,7 @@ import { Button } from '../../shared/ui/button/button';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 
 @Component({
-  imports: [Button, SectionHeader, RevealOnScroll],
+  imports: [NgOptimizedImage, Button, SectionHeader, RevealOnScroll],
   selector: 'app-testimonials',
   styleUrl: './testimonials.scss',
   templateUrl: './testimonials.html',

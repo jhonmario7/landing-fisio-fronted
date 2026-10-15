@@ -272,7 +272,56 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
 
-  testimonials: [],
+  // [PENDIENTE: testimonios de ejemplo (nombres, textos y fotos genéricas) mientras la
+  // cliente verifica su Perfil de Negocio en Google. Reemplazar por reseñas reales
+  // antes de publicar.]
+  testimonials: [
+    {
+      id: 'placeholder-1',
+      authorName: 'Camilo R.',
+      text: 'Desde la primera cita me sentí escuchado. Me explicó cada ejercicio con paciencia y siempre estuvo pendiente de cómo me sentía.',
+      rating: 5,
+      authorizedInWriting: false,
+      isPlaceholder: true,
+      photo: {
+        src: '/images/testimonio-1.webp',
+        alt: 'Retrato de Camilo, hombre joven de cabello castaño ondulado, sonriendo al aire libre',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
+    },
+    {
+      id: 'placeholder-2',
+      authorName: 'Laura G.',
+      text: 'Un espacio tranquilo y una atención muy cercana. Me dio pautas claras para seguir en casa y resolvió todas mis dudas.',
+      rating: 5,
+      authorizedInWriting: false,
+      isPlaceholder: true,
+      photo: {
+        src: '/images/testimonio-2.webp',
+        alt: 'Retrato de Laura, mujer de cabello oscuro recogido, sonriendo en un gimnasio',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
+    },
+    {
+      id: 'placeholder-3',
+      authorName: 'Santiago P.',
+      text: 'Muy profesional y puntual. Se nota que adapta el tratamiento a cada persona y acompaña todo el proceso.',
+      rating: 5,
+      authorizedInWriting: false,
+      isPlaceholder: true,
+      photo: {
+        src: '/images/testimonio-3.webp',
+        alt: 'Retrato de Santiago, hombre joven con barba corta, junto al mar al atardecer',
+        width: 240,
+        height: 240,
+        isStockTemporary: true,
+      },
+    },
+  ],
 
   faq: [
     {

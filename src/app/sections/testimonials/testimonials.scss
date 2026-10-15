@@ -1,39 +1,71 @@
+$photo-size: 104px;
+
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
   gap: var(--space-4);
+  // Espacio para la foto que sobresale por encima de cada tarjeta.
+  padding-top: calc($photo-size / 2);
 }
 
 .testimonial-card {
   margin: 0;
-  background: var(--color-bg-alt);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  padding: calc($photo-size / 2 + var(--space-3)) var(--space-4) var(--space-4);
+  text-align: center;
+  position: relative;
 }
 
-.testimonial-card p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--color-text);
+// Tarjeta central desplazada hacia abajo, como en la referencia.
+.testimonial-card:nth-child(3n + 2) {
+  margin-top: var(--space-5);
 }
 
-.testimonial-card footer {
-  margin-top: var(--space-3);
-  font-weight: 700;
-  color: var(--color-cta);
-  font-style: normal;
+.testimonial-card__photo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: $photo-size;
+  height: $photo-size;
+  border-radius: 50%;
+  border: 4px solid var(--color-card);
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-card);
+  object-fit: cover;
 }
 
 .testimonial-card__rating {
   display: flex;
-  gap: 2px;
-  margin-bottom: var(--space-2);
+  justify-content: center;
+  gap: 4px;
   color: var(--color-border);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .testimonial-card__rating .is-filled {
   color: var(--color-primary);
+}
+
+.testimonial-card__author {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.testimonial-card blockquote {
+  margin: var(--space-2) 0 0;
+}
+
+.testimonial-card p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--color-text-soft);
 }
 
 .testimonials-cta {
@@ -46,8 +78,15 @@
   margin-bottom: var(--space-3);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+    row-gap: calc($photo-size / 2 + var(--space-4));
+  }
+
+  .testimonial-card:nth-child(3n + 2) {
+    margin-top: 0;
   }
 }

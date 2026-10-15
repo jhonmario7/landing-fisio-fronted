@@ -93,6 +93,10 @@ export interface Testimonial {
   authorizedInWriting: boolean;
   rating?: number;
   source?: 'direct' | 'google';
+  photo?: MediaAsset;
+  // Testimonio genérico de maqueta (no es de un paciente real). Se renderiza aunque
+  // authorizedInWriting sea false; debe eliminarse antes de publicar.
+  isPlaceholder?: boolean;
 }
 
 // Formulario de contacto. Los motivos son GENERALES a propósito (Ley 1581):

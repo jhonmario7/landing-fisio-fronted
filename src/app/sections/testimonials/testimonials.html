@@ -9,18 +9,33 @@
     @if (content.testimonials.length) {
       <div class="testimonials-grid">
         @for (testimonial of content.testimonials; track testimonial.id) {
-          @if (testimonial.authorizedInWriting) {
-            <blockquote class="testimonial-card">
+          @if (testimonial.authorizedInWriting || testimonial.isPlaceholder) {
+            <figure class="testimonial-card">
+              @if (testimonial.photo; as photo) {
+                <img
+                  class="testimonial-card__photo"
+                  [ngSrc]="photo.src"
+                  [alt]="photo.alt"
+                  [width]="photo.width"
+                  [height]="photo.height"
+                />
+              }
               @if (testimonial.rating) {
-                <div class="testimonial-card__rating" aria-hidden="true">
+                <div
+                  class="testimonial-card__rating"
+                  role="img"
+                  [attr.aria-label]="testimonial.rating + ' de 5 estrellas'"
+                >
                   @for (star of [1, 2, 3, 4, 5]; track star) {
-                    <span [class.is-filled]="star <= testimonial.rating!">★</span>
+                    <span aria-hidden="true" [class.is-filled]="star <= testimonial.rating!">★</span>
                   }
                 </div>
               }
-              <p>"{{ testimonial.text }}"</p>
-              <footer>{{ testimonial.authorName }}</footer>
-            </blockquote>
+              <figcaption class="testimonial-card__author">{{ testimonial.authorName }}</figcaption>
+              <blockquote>
+                <p>“{{ testimonial.text }}”</p>
+              </blockquote>
+            </figure>
           }
         }
       </div>
