@@ -126,6 +126,7 @@ Cloudflare despliega lo que esté **pusheado** en `main`; los cambios locales si
 7. **Mapa** — SVG ilustrado propio + botón "Cómo llegar" a Google Maps (sin iframe).
 8. **Testimonios** — CTA "Comparte tu experiencia" por WhatsApp siempre visible; tarjetas de ejemplo temporales solo hasta tener reseñas reales.
 9. **Orden de fases** — deploy de preview (5) antes de auditoría SEO/rendimiento (6).
+10. **Ramas** — `develop` (trabajo diario, preview automática por rama) → merge a `main` (lo que ve la cliente / producción). Sin rama de testing aparte: la URL de `develop` cumple ese rol.
 
 ## Información aún `[PENDIENTE]` de la cliente
 

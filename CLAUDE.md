@@ -82,6 +82,10 @@ ng build      # debe producir dist/fronted-landing-fisio/browser/ sin carpeta se
 
 Versionar desde el primer commit, con mensajes de commit descriptivos (no "wip", no "fix").
 
+Ramas (desde el 15 oct 2026):
+- `develop` → donde se trabaja. Cloudflare Pages la publica sola en `develop.yuli-fisioterapia.pages.dev` (con `X-Robots-Tag: noindex` automático).
+- `main` → lo que ve la cliente (`yuli-fisioterapia.pages.dev`) y, en Fase 7, producción. Solo recibe merges de `develop` ya revisados.
+
 ## Metodología de trabajo
 
 Se avanza por fases (0 a 7, ver `docs/PLAN.md`) y se espera confirmación del usuario antes de pasar a la siguiente. No agregar features, rutas o dependencias fuera de lo que pide el brief sin señalarlo explícitamente primero.
