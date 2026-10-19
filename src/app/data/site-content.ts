@@ -34,13 +34,11 @@ export const SITE_CONTENT: SiteContent = {
       width: 720,
       height: 1450,
     },
-    // Foto de stock temporal, reemplazar cuando la cliente entregue la suya.
     painPhoto: {
-      src: '/images/pain-banner.webp',
-      alt: 'Paciente boca abajo recibiendo terapia de frío con una compresa de gel sobre la espalda',
-      width: 700,
-      height: 933,
-      isStockTemporary: true,
+      src: '/images/pain-ventosas.webp',
+      alt: 'Paciente boca abajo en el consultorio recibiendo terapia con ventosas en la espalda',
+      width: 800,
+      height: 600,
     },
   },
 
@@ -69,13 +67,11 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'valoracion-integral',
       name: 'Valoración Integral Fisioterapéutica',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
       image: {
-        src: '/images/service-fisio.webp',
-        alt: 'Fisioterapeuta guiando a un paciente en un ejercicio con mancuerna durante una valoración',
+        src: '/images/service-valoracion.webp',
+        alt: 'Radiografía de un pie abierta en el portátil del consultorio durante una valoración',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Una evaluación completa de tu condición física, movilidad y dolor para identificar el origen del problema.',
@@ -105,13 +101,11 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'rehabilitacion-deportiva',
       name: 'Rehabilitación Deportiva',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
       image: {
-        src: '/images/service-fisio.webp',
-        alt: 'Fisioterapeuta guiando a un paciente en un ejercicio de fuerza con mancuerna',
+        src: '/images/service-deportiva.webp',
+        alt: 'Paciente realizando una sentadilla con barra en la sala de ejercicio del consultorio',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Tratamiento enfocado en lesiones relacionadas con la práctica deportiva, para que vuelvas a entrenar con confianza.',
@@ -141,13 +135,11 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'rehabilitacion-postquirurgica',
       name: 'Rehabilitación Postquirúrgica',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
       image: {
-        src: '/images/service-electro.webp',
-        alt: 'Electrodos de estimulación aplicados en el pie de un paciente sobre una camilla',
+        src: '/images/service-postquirurgica.webp',
+        alt: 'Electrodos de electroterapia aplicados en la pierna de un paciente sobre la camilla',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Acompañamiento fisioterapéutico después de una cirugía, siguiendo tu proceso de recuperación paso a paso.',
@@ -159,13 +151,11 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'presoterapia',
       name: 'Presoterapia',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
       image: {
-        src: '/images/service-drenaje.webp',
-        alt: 'Fisioterapeuta realizando un masaje suave sobre la pierna de un paciente',
+        src: '/images/service-presoterapia.webp',
+        alt: 'Paciente en camilla con botas de presoterapia en ambas piernas',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Terapia de compresión que estimula la circulación y ayuda a disminuir la inflamación.',
@@ -177,13 +167,11 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'descarga-muscular',
       name: 'Descarga Muscular',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
       image: {
-        src: '/images/service-descargas.webp',
-        alt: 'Paciente boca abajo con electrodos en la espalda mientras la fisioterapeuta le aplica masaje',
+        src: '/images/service-descarga.webp',
+        alt: 'Ventosas aplicadas sobre la espalda de un paciente para liberar tensión muscular',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Masaje y técnicas específicas para liberar tensión muscular acumulada por esfuerzo o estrés físico.',
@@ -195,13 +183,11 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'vendaje-neuromuscular',
       name: 'Vendaje Neuromuscular',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
       image: {
-        src: '/images/service-puncion.webp',
-        alt: 'Paciente en camilla con electrodos aplicados sobre el hombro',
+        src: '/images/service-vendaje.webp',
+        alt: 'Vendaje neuromuscular rosado aplicado sobre la rodilla de un paciente',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Aplicación de vendaje terapéutico que da soporte a músculos y articulaciones durante tu recuperación o actividad.',
@@ -237,14 +223,14 @@ export const SITE_CONTENT: SiteContent = {
       country: 'Colombia',
       googleMapsDirectionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(FULL_ADDRESS)}`,
       coordinates: null,
-      // 4 fotos reales del consultorio + 2 temporales de referencia (reemplazar).
+      // Fotos reales del consultorio (entregadas por la cliente).
       photos: [
         { src: '/images/espacio-recepcion.webp', alt: 'Recepción del consultorio con el logo dorado de Yuli Fernanda Silva y sus diplomas en la pared', width: 800, height: 992 },
         { src: '/images/espacio-ejercicio.webp', alt: 'Sala de ejercicio terapéutico con balones, bandas elásticas, pesas y cajón pliométrico', width: 800, height: 1281 },
         { src: '/images/espacio-camilla.webp', alt: 'Cubículo de tratamiento con camilla y repisa de insumos terapéuticos', width: 800, height: 1172 },
         { src: '/images/espacio-fachada.webp', alt: 'Entrada del consultorio con el aviso de Fisioterapia de Yuli Fernanda Silva', width: 800, height: 902 },
-        { src: '/images/espacio-demo-manual.webp', alt: 'Fisioterapeuta aplicando terapia manual a un paciente', width: 700, height: 525, isStockTemporary: true },
-        { src: '/images/espacio-demo-estiramiento.webp', alt: 'Sesión de estiramiento terapéutico en camilla', width: 800, height: 600, isStockTemporary: true },
+        { src: '/images/espacio-sentadilla.webp', alt: 'Paciente haciendo una sentadilla con barra en la sala de ejercicio terapéutico', width: 800, height: 600 },
+        { src: '/images/espacio-presoterapia.webp', alt: 'Paciente recibiendo presoterapia en la camilla del cubículo de tratamiento', width: 800, height: 600 },
       ],
     },
   },
