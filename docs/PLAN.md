@@ -113,8 +113,7 @@ Corregido:
 
 **Medición tras desplegar (develop, 3 corridas de Lighthouse local):** Performance 81 / 85 / 89 · Accessibility 100 · Best Practices 100 · SEO 69. FCP 1.7–2.6 s, LCP 2.9–3.1 s, CLS 0. El TBT varía 110–350 ms según la carga de la CPU local, por eso el número final se toma de PageSpeed Insights. En una carga real (sin la simulación de 4G lento) el FCP es 0.3–0.8 s.
 
-Pendiente de esta fase:
-- Correr https://pagespeed.web.dev con `https://develop.yuli-fisioterapia.pages.dev` (móvil) y anotar el resultado. Si Performance queda < 90, lo siguiente es servir la foto del hero en un tamaño menor para móvil (`srcset`).
+Resultado final en PageSpeed Insights (develop): Móvil 94 / 100 / 100 / 69 · Ordenador 100 / 100 / 100 / 69. El `sitemap.xml` pasa a Fase 7 (se publica al quitar el `noindex`).
 
 - Lighthouse móvil ≥90 en Performance, Accessibility, Best Practices y SEO (SEO dará bajo por el `noindex` a propósito; evaluarlo ignorando ese ítem).
 - JSON-LD validado en el Rich Results Test / validator.schema.org (con URL absolutas).
