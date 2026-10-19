@@ -30,7 +30,7 @@ export class Location {
 
   protected readonly whatsappHref = buildWhatsAppUrl(
     this.content.social.whatsappPhoneE164,
-    'Hola, quiero agendar una cita en el consultorio.',
+    'Hola Yuli, quiero agendar una cita en tu consultorio.',
   );
 
   dayLabel(day: OperatingHoursRange['day']): string {

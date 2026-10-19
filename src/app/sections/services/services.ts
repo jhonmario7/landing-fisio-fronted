@@ -20,7 +20,7 @@ export class Services {
 
   protected readonly whatsappHref = buildWhatsAppUrl(
     this.content.social.whatsappPhoneE164,
-    'Hola, quiero información sobre sus servicios de fisioterapia.',
+    'Hola Yuli, quiero información sobre tus servicios de fisioterapia.',
   );
 
   accentClass(index: number): string {

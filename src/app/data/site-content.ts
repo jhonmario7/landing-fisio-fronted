@@ -75,7 +75,7 @@ export const SITE_CONTENT: SiteContent = {
       },
       shortDescription:
         'Una evaluación completa de tu condición física, movilidad y dolor para identificar el origen del problema.',
-      benefit: 'Entender qué te está pasando y con qué plan vamos a trabajar.',
+      benefit: 'Entender qué te está pasando y con qué plan vamos a trabajar juntos.',
       sessionDurationMinutes: null,
       requiresMedicalOrder: null,
       modalities: [],
@@ -333,29 +333,29 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       id: 'domicilio',
-      question: '¿Atienden a domicilio?',
+      question: '¿Atiendes a domicilio?',
       answer:
-        'Sí, ofrecemos atención en consultorio, a domicilio y de forma virtual, según lo que más te convenga.',
+        'Sí, ofrezco atención en consultorio, a domicilio y de forma virtual, según lo que más te convenga.',
     },
     {
       id: 'medios-pago',
-      question: '¿Qué medios de pago aceptan?',
-      answer: 'Aceptamos efectivo y transferencias.',
+      question: '¿Qué medios de pago aceptas?',
+      answer: 'Acepto efectivo y transferencias.',
     },
     {
       id: 'convenios',
-      question: '¿Manejan convenios con EPS o seguros?',
+      question: '¿Manejas convenios con EPS o seguros?',
       answer: 'Por ahora la atención es particular, sin convenios con EPS ni aseguradoras.',
     },
     {
       id: 'ninos',
-      question: '¿Atienden niños?',
-      answer: 'Sí, atendemos a partir de los 11 años.',
+      question: '¿Atiendes niños?',
+      answer: 'Sí, atiendo a partir de los 11 años.',
     },
     {
       id: 'como-agendar',
       question: '¿Cómo agendo mi cita?',
-      answer: 'Escríbenos por WhatsApp contándonos brevemente tu caso y te confirmamos disponibilidad.',
+      answer: 'Escríbeme por WhatsApp contándome brevemente tu caso y te confirmo disponibilidad.',
     },
   ],
 
@@ -371,7 +371,7 @@ export const SITE_CONTENT: SiteContent = {
     nextSteps: [
       { title: 'Envías tus datos', description: 'Completa el formulario; solo toma un minuto.' },
       { title: 'Te escribo por WhatsApp', description: 'Reviso tu mensaje y te contacto personalmente.' },
-      { title: 'Agendamos tu cita', description: 'Acordamos el día, la hora y la modalidad que mejor te funcionen.' },
+      { title: 'Agendamos tu cita', description: 'Acordamos juntos el día, la hora y la modalidad que mejor te funcionen.' },
     ],
   },
 

@@ -3,13 +3,13 @@
     <div class="location" appRevealOnScroll>
       <div class="location__copy">
         <app-section-header
-          [eyebrow]="'Visítanos · ' + location.city"
-          [title]="'Te esperamos en ' + location.city"
+          [eyebrow]="'Visítame · ' + location.city"
+          [title]="'Te espero en ' + location.city"
         />
         <p class="location__lead">
-          Agenda tu cita y te confirmamos disponibilidad por WhatsApp.
+          Agenda tu cita y te confirmo disponibilidad por WhatsApp.
           @if (homeVisits) {
-            Atendemos también a domicilio si lo prefieres.
+            Atiendo también a domicilio si lo prefieres.
           }
         </p>
 
@@ -35,7 +35,7 @@
             <app-icon name="map-pin" [size]="18" />
             Cómo llegar
           </app-button>
-          <app-button variant="ghost" [href]="whatsappHref" target="_blank">Escríbenos</app-button>
+          <app-button variant="ghost" [href]="whatsappHref" target="_blank">Escríbeme</app-button>
         </div>
       </div>
 
