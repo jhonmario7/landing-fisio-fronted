@@ -110,7 +110,7 @@ Cloudflare despliega lo que esté **pusheado** en `main`; los cambios locales si
 1. **Testimonios de ejemplo** — hoy se muestran 3 tarjetas con nombres, textos y fotos genéricas (`isPlaceholder: true`, `authorizedInWriting: false`). Aceptable en la preview privada para que la cliente vea el diseño; **prohibido en producción** (regla de testimonios reales con autorización escrita). Reemplazar por reseñas reales o vaciar el array (queda solo el CTA "Comparte tu experiencia").
 2. **Fotos de stock temporales** (`isStockTemporary: true`): las 8 de servicios, `painPhoto`, 2 del espacio. Reemplazar por fotos reales o aprobarlas explícitamente.
 3. **Copy BORRADOR** (bio, servicios, FAQ, contacto) aprobado por la cliente.
-4. Dominio definitivo a nombre de la cliente → `canonicalUrl`, `og:*`, JSON-LD `image`, `sitemap.xml`.
+4. ✅ Dominio comprado (19 oct 2026): **`fisioyuli.com`**. `SITE_URL` ya apunta ahí (canonical, `og:*`, JSON-LD). Falta: conectarlo en Cloudflare Pages → Custom domains (apex + redirección `www`), confirmar que está a nombre de la cliente, y crear `sitemap.xml` al quitar el `noindex`.
 5. Quitar `noindex` (meta + `robots.txt` → `Allow` + `Sitemap:`), verificar en Search Console, vincular Google Business Profile en `sameAs`.
 6. Decidir si se reactiva el formulario de contacto (rediseñado) o queda solo WhatsApp.
 7. Sección 12 de la política (cookies): ajustarla al funcionamiento real si se agrega analítica.

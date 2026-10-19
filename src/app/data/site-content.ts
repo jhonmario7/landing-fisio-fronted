@@ -7,8 +7,8 @@ import { SiteContent } from './site-content.model';
 // de servicios y FAQ son BORRADOR redactado por Claude para que ella los revise sobre un prototipo
 // visual y pida cambios — no son hechos inventados sobre ella, son copy de marketing a su criterio.
 
-// Vista previa en Cloudflare Pages; cambiar por el dominio definitivo en Fase 7 (sin "/" final).
-const SITE_URL = 'https://yuli-fisioterapia.pages.dev';
+// Dominio definitivo (sin "/" final). Alimenta canonical, og:image y JSON-LD.
+const SITE_URL = 'https://fisioyuli.com';
 
 const FULL_ADDRESS =
   'Avenida 26 #51-101, Ciudadela Deportiva El Bosque, Neiva, Huila, Colombia';

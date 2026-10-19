@@ -84,7 +84,7 @@ Versionar desde el primer commit, con mensajes de commit descriptivos (no "wip",
 
 Ramas (desde el 15 oct 2026):
 - `develop` → donde se trabaja. Cloudflare Pages la publica sola en `develop.yuli-fisioterapia.pages.dev` (con `X-Robots-Tag: noindex` automático).
-- `main` → lo que ve la cliente (`yuli-fisioterapia.pages.dev`) y, en Fase 7, producción. Solo recibe merges de `develop` ya revisados.
+- `main` → producción en `fisioyuli.com` (también responde en `yuli-fisioterapia.pages.dev`). Sigue con `noindex` hasta cerrar los bloqueantes de Fase 7 en `docs/PLAN.md`. Solo recibe merges de `develop` ya revisados.
 
 ## Metodología de trabajo
 
