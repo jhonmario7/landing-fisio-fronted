@@ -61,6 +61,11 @@
   .pain-points {
     grid-template-columns: 1fr;
   }
+
+  // En móvil la foto va antes del texto.
+  .pain-points__media {
+    order: -1;
+  }
 }
 
 // El hero ya aporta espacio inferior; sin esto la separación entre ambos se duplica.
