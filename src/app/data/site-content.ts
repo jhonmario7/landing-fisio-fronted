@@ -387,12 +387,12 @@ export const SITE_CONTENT: SiteContent = {
     defaultDescription:
       'Fisioterapia integral personalizada en Neiva, Huila. Atención en consultorio, a domicilio o virtual. Agenda tu valoración por WhatsApp.',
     canonicalUrl: SITE_URL,
-    // [PENDIENTE: imagen horizontal 1200x630 para compartir en redes; mientras tanto, la foto del hero]
+    // Tarjeta para compartir en redes/WhatsApp: foto real + logo + fuentes de marca (JPG por compatibilidad).
     ogImage: {
-      src: `${SITE_URL}/images/hero.webp`,
-      alt: 'Yuli Fernanda Silva, fisioterapeuta, sonriendo con su uniforme de trabajo',
-      width: 787,
-      height: 1231,
+      src: `${SITE_URL}/images/og-image.jpg`,
+      alt: 'Yuli Fernanda Silva, fisioterapeuta en Neiva, con su logo y el texto Fisioterapia Integral Personalizada',
+      width: 1200,
+      height: 630,
     },
     keywords: ['fisioterapeuta en Neiva', 'fisioterapia Neiva Huila', 'rehabilitación deportiva Neiva'],
     jsonLd: {
@@ -408,7 +408,9 @@ export const SITE_CONTENT: SiteContent = {
         '@type': 'PostalAddress',
         streetAddress: 'Avenida 26 #51-101, Ciudadela Deportiva El Bosque',
         addressLocality: 'Neiva',
+        addressRegion: 'Huila',
         addressCountry: 'CO',
+        // [PENDIENTE: postalCode y geo (coordenadas) — tomarlos del Perfil de Negocio de Google cuando esté verificado]
       },
       areaServed: { '@type': 'City', name: 'Neiva' },
       openingHoursSpecification: [

@@ -60,9 +60,10 @@ src/app/
 --color-accent: #AD7A00;         // Dorado Oscuro (marca) — SOLO decorativo (no pasa AA con texto blanco, ~3.8:1)
 --color-accent-tint: #F3E2BE;
 --color-danger: #B42318;         // mensajes de error de formulario (no es color de marca, estándar de accesibilidad)
+--color-gold-text: #8F6500;      // Dorado de marca oscurecido — ÚNICO dorado válido para texto pequeño (eyebrows): ≥4.5:1 sobre blanco, crema y tint
 ```
 
-**Regla de uso de color**: los dorados (`--color-primary`, `--color-accent`) son para iconos, bordes, fondos-con-tint o texto grande/bold — nunca texto normal ni botones con texto blanco (fallan AA 4.5:1 en esa combinación). El único color apto como fondo de botón/FAB con texto blanco es `--color-cta` (chocolate) — así es como la propia cliente usa su marca en la tarjeta de presentación (panel chocolate + dorado/blanco). El texto siempre usa `--color-text` / `--color-text-soft`.
+**Regla de uso de color**: los dorados (`--color-primary`, `--color-accent`) son para iconos, bordes, fondos-con-tint o texto grande/bold — nunca texto normal ni botones con texto blanco (fallan AA 4.5:1 en esa combinación). Si un texto pequeño debe verse dorado (eyebrows), usar `--color-gold-text`. El único color apto como fondo de botón/FAB con texto blanco es `--color-cta` (chocolate) — así es como la propia cliente usa su marca en la tarjeta de presentación (panel chocolate + dorado/blanco). El texto siempre usa `--color-text` / `--color-text-soft`.
 
 **Tipografía**: `--font-display: 'Lora'` + `--font-sans: 'Carlito'`, ambas cargadas en `index.html` con `font-display: swap`. Son los equivalentes web del brandbook real de Yuli (Book Antiqua Bold + Calibri Light).
 

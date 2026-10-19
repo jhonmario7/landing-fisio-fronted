@@ -48,3 +48,6 @@ Thumbs.db
 
 # Claude Code session artifacts
 /.claude/
+/AGENTS.md
+/CLAUDE.md
+/playwright-view

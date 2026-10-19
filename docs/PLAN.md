@@ -53,7 +53,7 @@ La fuente de verdad del tipado es `src/app/data/site-content.model.ts` (no se du
 | **3 — Secciones** | 11 secciones consumiendo `SITE_CONTENT` | ✅ Hecho: 1 solo `<h1>`, mapa SVG ilustrado + "Cómo llegar", FAB WhatsApp, botón "Volver arriba", `NgOptimizedImage` con `priority` solo en el hero, `prefers-reduced-motion` respetado. |
 | **4 — Contacto** | WhatsApp sin backend | ✅ Implementado (Signal Forms + checkbox Ley 1581) pero **el formulario está oculto** desde el 14 oct a pedido del usuario (comentado en `home.html`/`home.ts`, se rediseñará). El contacto hoy es por los CTA/FAB de WhatsApp. |
 | **5 — Despliegue de vista previa** | URL pública **no indexable** para que la cliente revise | ✅ Publicado el 15 oct 2026 en `https://yuli-fisioterapia.pages.dev` (Cloudflare Pages, flujo "legacy Pages", conectado a GitHub). Verificado: ambas rutas 200, `noindex`, `robots.txt` `Disallow: /`, JSON-LD, 1 `<h1>`, sin errores de consola ni scroll horizontal en 375px. Falta solo ver la primera preview de `develop` (se crea con el próximo push a esa rama). |
-| **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | Pendiente. Se movió después del deploy: medir sobre la preview en Cloudflare es más fiel que sobre `localhost`. |
+| **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | ⏳ En curso (19 oct 2026). Accesibilidad 92→100 y Best Practices 100. Falta medir Performance sobre la preview tras desplegar las mejoras (84 antes). SEO 69 solo por el `noindex`, a propósito. |
 | **7 — Producción** | Dominio, correo, analítica, indexación | Pendiente (bloqueantes listados abajo). |
 
 > Cambio de orden (15 oct 2026): antes la Fase 5 era SEO/rendimiento y la 6 el deploy. Se invirtieron porque el usuario quiere tener la preview publicada ya, y la auditoría Lighthouse/Rich Results se hace mejor contra la URL desplegada.
@@ -98,6 +98,18 @@ Cloudflare despliega lo que esté **pusheado** en `main`; los cambios locales si
 - Probado en incógnito, móvil real (360px) y escritorio (1440px); el link compartido por WhatsApp muestra título/imagen.
 
 ## Fase 6 — SEO, rendimiento y accesibilidad (sobre la preview)
+
+**Primera medición (19 oct 2026, `yuli-fisioterapia.pages.dev`, Lighthouse 12 móvil):** Performance 84 · Accessibility 92 · Best Practices 100 · SEO 69.
+
+Corregido:
+- Contraste: los eyebrows usaban el dorado de marca (2.5:1). Nuevo token `--color-gold-text: #8F6500` (mismo dorado, más oscuro; ≥4.5:1 sobre blanco, crema y tint).
+- Nombres accesibles: el logo del header (link) y el botón de WhatsApp en móvil no tenían texto visible → `aria-label`.
+- `icon.webp` 240px/22 KB → 140px/8 KB, con `width`/`height` explícitos en header y footer.
+- **Hidratación incremental** (`withIncrementalHydration` + `@defer (hydrate on viewport)` en todas las secciones bajo el hero y el footer): el HTML prerenderizado se ve completo; el JS de cada sección se descarga al entrar en pantalla (2 chunks al cargar, 11 tras recorrer la página). Verificado en Chrome headless: menú, FAQ, reveal-on-scroll y "Volver arriba" funcionan, sin errores.
+- Imagen OG real `public/images/og-image.jpg` (1200×630, 44 KB): foto recortada de Yuli + logo + Book Antiqua/Calibri + colores de marca.
+- JSON-LD revisado: estructura válida (`MedicalBusiness`); se agregó `addressRegion: 'Huila'`. Quedan `postalCode` y `geo` pendientes del Perfil de Negocio de Google. El Rich Results Test por URL no sirve mientras `robots.txt` bloquee: usar la opción "Código" pegando el JSON-LD del HTML.
+
+Pendiente de esta fase:
 
 - Lighthouse móvil ≥90 en Performance, Accessibility, Best Practices y SEO (SEO dará bajo por el `noindex` a propósito; evaluarlo ignorando ese ítem).
 - JSON-LD validado en el Rich Results Test / validator.schema.org (con URL absolutas).

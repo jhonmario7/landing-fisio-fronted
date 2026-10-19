@@ -1,16 +1,18 @@
 <app-header />
 <main>
   <app-hero />
-  <app-pain-points />
-  <app-services />
-  <app-about />
-  <app-space />
-  <app-testimonials />
-  <app-location />
-  <app-faq />
+  <!-- Hidratación incremental: el HTML prerenderizado se ve completo desde el inicio;
+       el JS de cada sección se descarga y activa solo cuando entra en pantalla. -->
+  @defer (hydrate on viewport) { <app-pain-points /> }
+  @defer (hydrate on viewport) { <app-services /> }
+  @defer (hydrate on viewport) { <app-about /> }
+  @defer (hydrate on viewport) { <app-space /> }
+  @defer (hydrate on viewport) { <app-testimonials /> }
+  @defer (hydrate on viewport) { <app-location /> }
+  @defer (hydrate on viewport) { <app-faq /> }
   <!-- Formulario de contacto oculto temporalmente (14 oct 2026): se rediseñará más adelante.
        Para reactivarlo: descomentar esta línea y Contact en home.ts.
   <app-contact />
   -->
 </main>
-<app-footer />
+@defer (hydrate on viewport) { <app-footer /> }

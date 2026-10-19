@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="wrap site-header__row">
-    <a class="brand" href="#top" (click)="closeMenu()">
-      <img class="brand__icon" src="/images/icon.webp" alt="" />
+    <a class="brand" href="#top" (click)="closeMenu()" [attr.aria-label]="content.identity.businessName + ', ir al inicio'">
+      <img class="brand__icon" src="/images/icon.webp" alt="" width="140" height="141" />
       <span class="brand__text">
         <strong>{{ content.identity.businessName }}</strong>
         <small>{{ content.identity.brandTagline }}</small>
@@ -14,7 +14,13 @@
       }
     </nav>
 
-    <app-button variant="primary" [href]="whatsappHref" target="_blank" class="header-cta">
+    <app-button
+      variant="primary"
+      [href]="whatsappHref"
+      target="_blank"
+      class="header-cta"
+      [ariaLabel]="'Escribir por WhatsApp al ' + content.social.phoneDisplay"
+    >
       <app-icon name="whatsapp" [size]="18" />
       <span class="header-cta__label">{{ content.social.phoneDisplay }}</span>
     </app-button>

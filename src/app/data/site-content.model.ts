@@ -151,6 +151,7 @@ export interface PhysiotherapySchema {
     '@type': 'PostalAddress';
     streetAddress: string;
     addressLocality: string;
+    addressRegion?: string;
     addressCountry: string;
   };
   areaServed?: { '@type': 'City'; name: string };
