@@ -53,7 +53,7 @@ La fuente de verdad del tipado es `src/app/data/site-content.model.ts` (no se du
 | **3 — Secciones** | 11 secciones consumiendo `SITE_CONTENT` | ✅ Hecho: 1 solo `<h1>`, mapa SVG ilustrado + "Cómo llegar", FAB WhatsApp, botón "Volver arriba", `NgOptimizedImage` con `priority` solo en el hero, `prefers-reduced-motion` respetado. |
 | **4 — Contacto** | WhatsApp sin backend | ✅ Implementado (Signal Forms + checkbox Ley 1581) pero **el formulario está oculto** desde el 14 oct a pedido del usuario (comentado en `home.html`/`home.ts`, se rediseñará). El contacto hoy es por los CTA/FAB de WhatsApp. |
 | **5 — Despliegue de vista previa** | URL pública **no indexable** para que la cliente revise | ✅ Publicado el 15 oct 2026 en `https://yuli-fisioterapia.pages.dev` (Cloudflare Pages, flujo "legacy Pages", conectado a GitHub). Verificado: ambas rutas 200, `noindex`, `robots.txt` `Disallow: /`, JSON-LD, 1 `<h1>`, sin errores de consola ni scroll horizontal en 375px. Falta solo ver la primera preview de `develop` (se crea con el próximo push a esa rama). |
-| **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | ⏳ En curso (19 oct 2026). Accesibilidad 92→100 y Best Practices 100. Falta medir Performance sobre la preview tras desplegar las mejoras (84 antes). SEO 69 solo por el `noindex`, a propósito. |
+| **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | ⏳ Casi cerrada (19 oct 2026). Accessibility 92→**100**, Best Practices **100**, Performance 84→**85-89** (Lighthouse local, ruidoso por la CPU del PC). SEO 69 solo por el `noindex`, a propósito. Falta: confirmar Performance en pagespeed.web.dev (servidores de Google). |
 | **7 — Producción** | Dominio, correo, analítica, indexación | Pendiente (bloqueantes listados abajo). |
 
 > Cambio de orden (15 oct 2026): antes la Fase 5 era SEO/rendimiento y la 6 el deploy. Se invirtieron porque el usuario quiere tener la preview publicada ya, y la auditoría Lighthouse/Rich Results se hace mejor contra la URL desplegada.
@@ -109,7 +109,12 @@ Corregido:
 - Imagen OG real `public/images/og-image.jpg` (1200×630, 44 KB): foto recortada de Yuli + logo + Book Antiqua/Calibri + colores de marca.
 - JSON-LD revisado: estructura válida (`MedicalBusiness`); se agregó `addressRegion: 'Huila'`. Quedan `postalCode` y `geo` pendientes del Perfil de Negocio de Google. El Rich Results Test por URL no sirve mientras `robots.txt` bloquee: usar la opción "Código" pegando el JSON-LD del HTML.
 
+- **Fuentes autoalojadas** en `public/fonts/` (Lora variable + Carlito 400/700/700i, subconjunto latino, OFL), `@font-face` inline en `index.html` y `preload` de las dos de la primera pantalla. Ya no hay peticiones a Google Fonts (mejor rendimiento y privacidad).
+
+**Medición tras desplegar (develop, 3 corridas de Lighthouse local):** Performance 81 / 85 / 89 · Accessibility 100 · Best Practices 100 · SEO 69. FCP 1.7–2.6 s, LCP 2.9–3.1 s, CLS 0. El TBT varía 110–350 ms según la carga de la CPU local, por eso el número final se toma de PageSpeed Insights. En una carga real (sin la simulación de 4G lento) el FCP es 0.3–0.8 s.
+
 Pendiente de esta fase:
+- Correr https://pagespeed.web.dev con `https://develop.yuli-fisioterapia.pages.dev` (móvil) y anotar el resultado. Si Performance queda < 90, lo siguiente es servir la foto del hero en un tamaño menor para móvil (`srcset`).
 
 - Lighthouse móvil ≥90 en Performance, Accessibility, Best Practices y SEO (SEO dará bajo por el `noindex` a propósito; evaluarlo ignorando ese ítem).
 - JSON-LD validado en el Rich Results Test / validator.schema.org (con URL absolutas).
