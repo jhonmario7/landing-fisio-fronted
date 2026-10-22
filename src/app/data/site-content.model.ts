@@ -87,17 +87,26 @@ export interface OperationInfo {
   location: ClinicLocation;
 }
 
+// Reseña real. Las de Google son públicas (el paciente las publica él mismo) y se muestran
+// con atribución; las directas requieren authorizedInWriting.
 export interface Testimonial {
   id: string;
-  authorName: string;
-  text: string;
-  authorizedInWriting: boolean;
-  rating?: number;
-  source?: 'direct' | 'google';
+  authorName: string; // como aparece en Google (o nombre + inicial si es directa)
+  text: string; // copiado literal, sin editar
+  rating: number; // 1-5
+  source: 'google' | 'direct';
+  dateLabel?: string; // texto fijo, p. ej. "Octubre 2026" (no relativo: el sitio es estático)
+  authorizedInWriting?: boolean;
+  // Foto de perfil SOLO con permiso explícito de la persona, guardada local en
+  // public/images/resenas/ (nunca enlazada a Google). Sin foto se muestra la inicial.
   photo?: MediaAsset;
-  // Testimonio genérico de maqueta (no es de un paciente real). Se renderiza aunque
-  // authorizedInWriting sea false; debe eliminarse antes de publicar.
-  isPlaceholder?: boolean;
+}
+
+export interface GoogleReviewsInfo {
+  profileUrl: string; // ficha en Google Maps
+  writeReviewUrl: string; // formulario "Escribe una reseña"
+  rating: number | null; // promedio que muestra Google, p. ej. 5.0
+  count: number | null; // total de reseñas en Google
 }
 
 // Formulario de contacto. Los motivos son GENERALES a propósito (Ley 1581):
@@ -126,7 +135,7 @@ export interface SocialChannels {
   instagramUrl?: string;
   facebookUrl?: string;
   tiktokUrl?: string;
-  googleBusinessProfileUrl?: string;
+  google: GoogleReviewsInfo;
 }
 
 export interface SeoConfig {

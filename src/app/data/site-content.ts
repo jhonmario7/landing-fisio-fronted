@@ -83,13 +83,12 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'terapia-manual-ortopedica',
       name: 'Terapia Manual Ortopédica',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      // Foto de stock aprobada por la cliente como definitiva (22 oct 2026).
       image: {
         src: '/images/service-drenaje.webp',
         alt: 'Fisioterapeuta aplicando terapia manual con ambas manos sobre la pierna de un paciente',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Técnicas manuales aplicadas sobre músculos, articulaciones y tejidos para aliviar el dolor y mejorar el movimiento.',
@@ -117,13 +116,12 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'ejercicio-terapeutico',
       name: 'Ejercicio Terapéutico',
-      // Foto temporal reutilizada, reemplazar por una propia del servicio.
+      // Foto de stock aprobada por la cliente como definitiva (22 oct 2026).
       image: {
         src: '/images/service-fisio.webp',
         alt: 'Paciente realizando un ejercicio con mancuerna guiado por la fisioterapeuta',
         width: 240,
         height: 240,
-        isStockTemporary: true,
       },
       shortDescription:
         'Rutinas de ejercicio diseñadas específicamente para tu recuperación y fortalecimiento.',
@@ -262,54 +260,39 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
 
-  // [PENDIENTE: testimonios de ejemplo (nombres, textos y fotos genéricas) mientras la
-  // cliente verifica su Perfil de Negocio en Google. Reemplazar por reseñas reales
-  // antes de publicar.]
+  // Reseñas reales copiadas literal de Google (más recientes primero). Solo se muestran
+  // las que la cliente elija; nunca editar el texto ni inventar.
   testimonials: [
     {
-      id: 'placeholder-1',
-      authorName: 'Camilo R.',
-      text: 'Desde la primera cita me sentí escuchado. Me explicó cada ejercicio con paciencia y siempre estuvo pendiente de cómo me sentía.',
+      id: 'google-jimmy-hernandez',
+      authorName: 'Jimmy Alejandro Hernandez Yara',
+      text: 'Excelente consultorio, con una atención de primera y un servicio muy profesional. Desde el primer momento, te hacen sentir cómodo, te escuchan y se enfocan en tus necesidades y objetivos personales. Lo que más destaco es el compromiso, la dedicación y el interés por ayudar a cada persona a recuperarse y mejorar su bienestar. También te acompañan durante todo el proceso, buscando siempre los mejores resultados para tu recuperación. Se nota el amor y la pasión con la que hace su trabajo. Sin duda, un lugar totalmente recomendado.',
       rating: 5,
-      authorizedInWriting: false,
-      isPlaceholder: true,
+      source: 'google',
+      dateLabel: 'Octubre 2026',
+    },
+    {
+      id: 'google-jhon-rodriguez',
+      authorName: 'Jhon Mario Rodríguez Ramirez',
+      text: 'Excelente atención. Yuli se toma el tiempo de explicarte qué te está pasando y te arma un plan a tu medida. Se nota su preparación y lo cercana que es durante todo el proceso. El consultorio es cómodo y está muy bien equipado. 100% recomendada.',
+      rating: 5,
+      source: 'google',
+      dateLabel: 'Octubre 2026',
+      // Foto autorizada por él mismo (22 oct 2026).
       photo: {
-        src: '/images/testimonio-1.webp',
-        alt: 'Retrato de Camilo, hombre joven de cabello castaño ondulado, sonriendo al aire libre',
-        width: 240,
-        height: 240,
-        isStockTemporary: true,
+        src: '/images/resenas/jhon-rodriguez.webp',
+        alt: 'Foto de perfil de Jhon Mario Rodríguez Ramirez',
+        width: 96,
+        height: 96,
       },
     },
     {
-      id: 'placeholder-2',
-      authorName: 'Laura G.',
-      text: 'Un espacio tranquilo y una atención muy cercana. Me dio pautas claras para seguir en casa y resolvió todas mis dudas.',
+      id: 'google-laura-tejada',
+      authorName: 'Laura Tejada Gutierrez',
+      text: 'Amo mis sesiones de terapia con la Fisio Yuli es muy atenta, humana y la verdad la recuperación después de mi lesión de rodilla ha sido excelente',
       rating: 5,
-      authorizedInWriting: false,
-      isPlaceholder: true,
-      photo: {
-        src: '/images/testimonio-2.webp',
-        alt: 'Retrato de Laura, mujer de cabello oscuro recogido, sonriendo en un gimnasio',
-        width: 240,
-        height: 240,
-        isStockTemporary: true,
-      },
-    },
-    {
-      id: 'placeholder-3',
-      authorName: 'Santiago P.',
-      text: 'Muy profesional y puntual. Se nota que adapta el tratamiento a cada persona y acompaña todo el proceso.',
-      rating: 5,
-      authorizedInWriting: false,
-      isPlaceholder: true,
-      photo: {
-        src: '/images/testimonio-3.webp',
-        alt: 'Retrato de Santiago, hombre joven con barba corta, junto al mar al atardecer',
-        width: 240,
-        height: 240,
-        isStockTemporary: true,
-      },
+      source: 'google',
+      dateLabel: 'Octubre 2026',
     },
   ],
 
@@ -380,6 +363,12 @@ export const SITE_CONTENT: SiteContent = {
     phoneDisplay: '314 408 5632',
     email: 'yulifernanda28@hotmail.com',
     instagramUrl: 'https://instagram.com/ft.yulifernandasilva',
+    google: {
+      profileUrl: 'https://g.page/r/CR0sE00rkJrIECE',
+      writeReviewUrl: 'https://g.page/r/CR0sE00rkJrIECE/review',
+      rating: null, // [PENDIENTE: promedio que muestra Google, p. ej. 5.0]
+      count: null, // [PENDIENTE: número de reseñas en Google]
+    },
   },
 
   seo: {
@@ -427,7 +416,7 @@ export const SITE_CONTENT: SiteContent = {
           closes: '15:00',
         },
       ],
-      sameAs: ['https://instagram.com/ft.yulifernandasilva'],
+      sameAs: ['https://instagram.com/ft.yulifernandasilva', 'https://g.page/r/CR0sE00rkJrIECE'],
     },
   },
 
