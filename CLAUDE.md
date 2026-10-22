@@ -35,7 +35,7 @@ src/app/
 - **Nunca inventar datos**: nombre, credenciales, cifras, testimonios o fotos deben venir confirmados por la cliente. Lo no confirmado se marca `[PENDIENTE: detalle]` en `site-content.ts`.
 - **Publicidad en salud**: prohibido "cura garantizada", "resultados en X sesiones", o comparaciones con otros profesionales.
 - **Datos personales (Ley 1581 de 2012, Colombia)**: el formulario de contacto pide solo nombre, teléfono y motivo general. Nunca pedir historia clínica ni diagnósticos. Checkbox de autorización obligatorio, con link a la política de tratamiento de datos.
-- **Testimonios**: solo reales y con autorización escrita (`authorizedInWriting: true`); si el array está vacío no se renderizan tarjetas falsas. La sección en sí **ya no se oculta por completo** cuando no hay testimonios: siempre muestra un CTA "Comparte tu experiencia" que abre WhatsApp con un mensaje prellenado (reseña + estrellas). Es la recolección de reseñas que pidió la cliente — sin backend: ella las recibe por WhatsApp, decide cuáles aprobar, y se agregan manualmente a `site-content.ts` cuando las confirme (`sections/testimonials/testimonials.ts`).
+- **Testimonios = reseñas reales de Google** (desde el 22 oct 2026, perfil verificado): se copian literal del Perfil de Negocio a `testimonials` en `site-content.ts` con `source: 'google'` (son públicas y se muestran con atribución "Reseña de Google"). Las directas (`source: 'direct'`) solo con `authorizedInWriting: true`. Nunca inventar, editar ni usar reseñas de ejemplo. Sin reseñas, la sección muestra solo la tarjeta resumen con "Escribe una reseña", que lleva a `social.google.writeReviewUrl` (ya no a WhatsApp). Fechas como texto fijo (`dateLabel`), nunca relativas: el sitio es estático. Foto de perfil (`photo`) solo con permiso explícito de la persona, descargada y guardada en `public/images/resenas/` (96px WebP), nunca enlazada a Google; sin foto se muestra la inicial. No agregar `aggregateRating` al JSON-LD: Google trata como "self-serving" las reseñas que el negocio muestra de sí mismo.
 - **Fotos de stock**: si se usan temporalmente, marcar `isStockTemporary: true` en el `MediaAsset` correspondiente.
 - **Accesibilidad**: WCAG 2.1 AA, contraste mínimo 4.5:1, navegable por teclado con foco visible, alt text descriptivo real (nunca genérico).
 - **Un solo `<h1>`** por página, jerarquía de encabezados correcta.
@@ -85,7 +85,7 @@ Versionar desde el primer commit, con mensajes de commit descriptivos (no "wip",
 
 Ramas (desde el 15 oct 2026):
 - `develop` → donde se trabaja. Cloudflare Pages la publica sola en `develop.yuli-fisioterapia.pages.dev` (con `X-Robots-Tag: noindex` automático).
-- `main` → producción en `fisioyuli.com` (también responde en `yuli-fisioterapia.pages.dev`). Sigue con `noindex` hasta cerrar los bloqueantes de Fase 7 en `docs/PLAN.md`. Solo recibe merges de `develop` ya revisados.
+- `main` → producción en `fisioyuli.com`, indexable (sin `noindex`, `robots.txt` abierto, `sitemap.xml`). El espejo `yuli-fisioterapia.pages.dev` lleva `X-Robots-Tag: noindex` vía `public/_headers`. Solo recibe merges de `develop` ya revisados.
 
 ## Metodología de trabajo
 

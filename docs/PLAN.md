@@ -54,7 +54,7 @@ La fuente de verdad del tipado es `src/app/data/site-content.model.ts` (no se du
 | **4 — Contacto** | WhatsApp sin backend | ✅ Implementado (Signal Forms + checkbox Ley 1581) pero **el formulario está oculto** desde el 14 oct a pedido del usuario (comentado en `home.html`/`home.ts`, se rediseñará). El contacto hoy es por los CTA/FAB de WhatsApp. |
 | **5 — Despliegue de vista previa** | URL pública **no indexable** para que la cliente revise | ✅ Publicado el 15 oct 2026 en `https://yuli-fisioterapia.pages.dev` (Cloudflare Pages, flujo "legacy Pages", conectado a GitHub). Verificado: ambas rutas 200, `noindex`, `robots.txt` `Disallow: /`, JSON-LD, 1 `<h1>`, sin errores de consola ni scroll horizontal en 375px. Falta solo ver la primera preview de `develop` (se crea con el próximo push a esa rama). |
 | **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | ✅ Cerrada (19 oct 2026). **PageSpeed Insights (servidores de Google)** — Móvil: Performance **94**, Accessibility **100**, Best Practices **100**. Ordenador: **100 / 100 / 100**. SEO 69 solo por el `noindex`, a propósito (sube al quitarlo en Fase 7). |
-| **7 — Producción** | Dominio, correo, analítica, indexación | Pendiente (bloqueantes listados abajo). |
+| **7 — Producción** | Dominio, correo, analítica, indexación | ⏳ En curso (22 oct 2026): perfil de Google verificado, textos aprobados, sección de reseñas rediseñada y sitio listo para indexar en `develop`. Ver checklist abajo. |
 
 > Cambio de orden (15 oct 2026): antes la Fase 5 era SEO/rendimiento y la 6 el deploy. Se invirtieron porque el usuario quiere tener la preview publicada ya, y la auditoría Lighthouse/Rich Results se hace mejor contra la URL desplegada.
 
@@ -121,15 +121,25 @@ Resultado final en PageSpeed Insights (develop): Móvil 94 / 100 / 100 / 69 · O
 - Revisar presupuesto de bundle (`angular.json`: inicial 500 kB warn / 1 MB error) y peso de imágenes.
 - Limpieza opcional: `server.ts`, `express` y el script `serve:ssr` no se usan con `outputMode: "static"`; se pueden quitar si no estorban al prerender (verificar con build).
 
-## Fase 7 — Producción: bloqueantes antes de quitar el `noindex`
+## Fase 7 — Producción
 
-1. **Testimonios de ejemplo** — hoy se muestran 3 tarjetas con nombres, textos y fotos genéricas (`isPlaceholder: true`, `authorizedInWriting: false`). Aceptable en la preview privada para que la cliente vea el diseño; **prohibido en producción** (regla de testimonios reales con autorización escrita). Reemplazar por reseñas reales o vaciar el array (queda solo el CTA "Comparte tu experiencia").
-2. **Fotos de stock temporales** (`isStockTemporary: true`): las 8 de servicios, `painPhoto`, 2 del espacio. Reemplazar por fotos reales o aprobarlas explícitamente.
-3. **Copy BORRADOR** (bio, servicios, FAQ, contacto) aprobado por la cliente.
-4. ✅ Dominio comprado (19 oct 2026): **`fisioyuli.com`**. `SITE_URL` ya apunta ahí (canonical, `og:*`, JSON-LD). Falta: conectarlo en Cloudflare Pages → Custom domains (apex + redirección `www`), confirmar que está a nombre de la cliente, y crear `sitemap.xml` al quitar el `noindex`.
-5. Quitar `noindex` (meta + `robots.txt` → `Allow` + `Sitemap:`), verificar en Search Console, vincular Google Business Profile en `sameAs`.
-6. Decidir si se reactiva el formulario de contacto (rediseñado) o queda solo WhatsApp.
-7. Sección 12 de la política (cookies): ajustarla al funcionamiento real si se agrega analítica.
+Hecho en `develop` (22 oct 2026):
+- ✅ Textos aprobados por la cliente.
+- ✅ Perfil de Negocio de Google verificado. Ficha: `https://g.page/r/CR0sE00rkJrIECE` (en `sameAs` del JSON-LD); reseñas: `.../review`.
+- ✅ Testimonios de ejemplo eliminados (y sus 3 fotos). Nueva sección "Testimonios" (reseñas de Google): tarjeta resumen (logo, promedio, nº de reseñas, "Escribe una reseña" → Google) + carrusel con scroll-snap nativo, flechas en escritorio, swipe en móvil, "Leer más" para textos largos. Sin reseñas cargadas muestra solo la tarjeta resumen.
+- ✅ `noindex` quitado, `robots.txt` → `Allow` + `Sitemap:`, `public/sitemap.xml` (2 URLs). `public/_headers` marca `noindex` solo en el espejo `yuli-fisioterapia.pages.dev`.
+- ✅ Dominio `fisioyuli.com` activo en Cloudflare Pages con SSL.
+
+Pendiente:
+1. **Reseñas reales**: 3 cargadas (Jimmy Alejandro Hernandez Yara, Jhon Mario Rodríguez Ramirez —con foto autorizada— y Laura Tejada Gutierrez; todas 5★, oct 2026). Seguir agregando las nuevas (link de cada reseña → nombre, estrellas, texto literal, mes/año) y completar `social.google.rating` / `count` cuando haya varias. Con 1-2 reseñas la sección se centra; con 3+ es carrusel de 2 por vista con flechas (swipe en móvil).
+2. ✅ Fotos de stock de Terapia Manual Ortopédica y Ejercicio Terapéutico aprobadas por la cliente como definitivas (22 oct 2026).
+3. **Ir a producción**: merge `develop` → `main` (desde ahí `fisioyuli.com` queda indexable).
+4. **Google Search Console**: agregar `fisioyuli.com` como propiedad de dominio (verificación por TXT en el DNS de Cloudflare) y enviar `https://fisioyuli.com/sitemap.xml`.
+5. `www.fisioyuli.com`: agregarlo en Custom domains y redirigir a la raíz.
+6. `postalCode` y `geo` del JSON-LD con los datos de la ficha de Google.
+7. Sección 12 de la política (cookies): el sitio no usa cookies ni analítica; ajustar el texto a eso (o al servicio de analítica si se agrega; Cloudflare Web Analytics no usa cookies).
+8. Confirmar que el dominio queda a nombre de la cliente o que ella tiene acceso.
+9. Decidir si se reactiva el formulario de contacto o queda solo WhatsApp.
 
 ## Decisiones del usuario
 
