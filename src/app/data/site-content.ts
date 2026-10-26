@@ -83,10 +83,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'terapia-manual-ortopedica',
       name: 'Terapia Manual Ortopédica',
-      // Foto de stock aprobada por la cliente como definitiva (22 oct 2026).
       image: {
-        src: '/images/service-drenaje.webp',
-        alt: 'Fisioterapeuta aplicando terapia manual con ambas manos sobre la pierna de un paciente',
+        src: '/images/service-terapia-manual.webp',
+        alt: 'Yuli aplicando terapia manual con ambas manos sobre la espalda de un paciente en la camilla',
         width: 240,
         height: 240,
       },
@@ -101,8 +100,8 @@ export const SITE_CONTENT: SiteContent = {
       id: 'rehabilitacion-deportiva',
       name: 'Rehabilitación Deportiva',
       image: {
-        src: '/images/service-deportiva.webp',
-        alt: 'Paciente realizando una sentadilla con barra en la sala de ejercicio del consultorio',
+        src: '/images/service-deportiva-evento.webp',
+        alt: 'Yuli atendiendo la rodilla de una deportista sentada en la camilla, en la carpa de un evento deportivo',
         width: 240,
         height: 240,
       },
@@ -116,10 +115,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       id: 'ejercicio-terapeutico',
       name: 'Ejercicio Terapéutico',
-      // Foto de stock aprobada por la cliente como definitiva (22 oct 2026).
       image: {
-        src: '/images/service-fisio.webp',
-        alt: 'Paciente realizando un ejercicio con mancuerna guiado por la fisioterapeuta',
+        src: '/images/service-ejercicio.webp',
+        alt: 'Paciente realizando una sentadilla con barra en la sala de ejercicio del consultorio',
         width: 240,
         height: 240,
       },
@@ -422,7 +420,7 @@ export const SITE_CONTENT: SiteContent = {
 
   legal: {
     dataPolicyUrl: '/politica-de-tratamiento-de-datos',
-    dataPolicyLastUpdated: '13 de octubre de 2026',
+    dataPolicyLastUpdated: '26 de octubre de 2026',
     dataPolicySections: [
       {
         heading: '1. Identificación del responsable',
@@ -540,8 +538,10 @@ export const SITE_CONTENT: SiteContent = {
       {
         heading: '12. Cookies y tecnologías similares',
         paragraphs: [
-          'Si el sitio web utiliza cookies u otras tecnologías de seguimiento, se informará a los usuarios sobre su finalidad y se implementarán los mecanismos de información y consentimiento que correspondan según la normativa aplicable.',
-          'Si el sitio web no utiliza estas tecnologías, este apartado deberá ajustarse a su funcionamiento real.',
+          'Este sitio web no utiliza cookies propias ni de terceros con fines publicitarios, de seguimiento o de elaboración de perfiles.',
+          'Para conocer de forma general cómo se usa el sitio, se emplea Cloudflare Web Analytics, una herramienta de medición que no instala cookies ni identifica a los visitantes. Solo recopila información agregada y anónima, como el número de visitas, las páginas consultadas, el tipo de dispositivo o navegador y el país aproximado de origen.',
+          'Los enlaces a WhatsApp, Google Maps, el perfil de Google y redes sociales llevan a plataformas de terceros, que aplican sus propias políticas de privacidad y de cookies una vez el usuario accede a ellas.',
+          'Si en el futuro se incorporan cookies u otras tecnologías de seguimiento, esta política se actualizará y se implementarán los mecanismos de información y consentimiento que correspondan según la normativa aplicable.',
         ],
       },
       {
