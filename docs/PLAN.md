@@ -132,14 +132,15 @@ Hecho en `develop` (22 oct 2026):
 
 Pendiente:
 1. **Reseñas reales**: 3 cargadas (Jimmy Alejandro Hernandez Yara, Jhon Mario Rodríguez Ramirez —con foto autorizada— y Laura Tejada Gutierrez; todas 5★, oct 2026). Seguir agregando las nuevas (link de cada reseña → nombre, estrellas, texto literal, mes/año) y completar `social.google.rating` / `count` cuando haya varias. Con 1-2 reseñas la sección se centra; con 3+ es carrusel de 2 por vista con flechas (swipe en móvil).
-2. ✅ Fotos de stock de Terapia Manual Ortopédica y Ejercicio Terapéutico aprobadas por la cliente como definitivas (22 oct 2026).
-3. **Ir a producción**: merge `develop` → `main` (desde ahí `fisioyuli.com` queda indexable).
+2. ✅ Imágenes y textos aprobados por la cliente (26 oct 2026). Sin fotos de stock: Terapia Manual Ortopédica y Rehabilitación Deportiva usan fotos propias nuevas (fotos-fisio-10 y -9); la sentadilla del consultorio pasó a Ejercicio Terapéutico. Las fotos 7 (radiografía: muestra el nombre de una paciente) y 8 (ecografía: cara de la paciente + marca de agua Meta AI) quedan sin usar (decisión del usuario).
+3. ✅ En producción e indexable desde el 22 oct 2026 (`robots.txt` abierto, sin `noindex`; el espejo `pages.dev` responde `X-Robots-Tag: noindex`, verificado).
 4. **Google Search Console**: agregar `fisioyuli.com` como propiedad de dominio (verificación por TXT en el DNS de Cloudflare) y enviar `https://fisioyuli.com/sitemap.xml`.
-5. `www.fisioyuli.com`: agregarlo en Custom domains y redirigir a la raíz.
-6. `postalCode` y `geo` del JSON-LD con los datos de la ficha de Google.
-7. Sección 12 de la política (cookies): el sitio no usa cookies ni analítica; ajustar el texto a eso (o al servicio de analítica si se agrega; Cloudflare Web Analytics no usa cookies).
+5. `www.fisioyuli.com`: hoy no resuelve (verificado 26 oct). Agregarlo en Pages → Custom domains y redirigir a la raíz.
+6. `postalCode` y `geo` del JSON-LD: pendiente que la cliente confirme código postal y ubicación del pin (opcional, mejora Google Maps).
+7. ✅ Sección 12 de la política reescrita (26 oct 2026): sin cookies; Cloudflare Web Analytics sin cookies con datos agregados; enlaces a terceros. `dataPolicyLastUpdated` → 26 oct 2026.
 8. Confirmar que el dominio queda a nombre de la cliente o que ella tiene acceso.
-9. Decidir si se reactiva el formulario de contacto o queda solo WhatsApp.
+9. ✅ Contacto: queda solo WhatsApp (decisión del usuario, 26 oct 2026). El formulario sigue en el código, comentado en `home.html`, por si la cliente lo pide más adelante.
+10. **Cloudflare Web Analytics** (decidido 26 oct 2026): activarlo en Pages → `yuli-fisioterapia` → Metrics → Web Analytics → Enable. Cloudflare inyecta el script solo en el siguiente deploy; no requiere código.
 
 ## Decisiones del usuario
 
