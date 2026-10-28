@@ -54,7 +54,7 @@ La fuente de verdad del tipado es `src/app/data/site-content.model.ts` (no se du
 | **4 — Contacto** | WhatsApp sin backend | ✅ Implementado (Signal Forms + checkbox Ley 1581) pero **el formulario está oculto** desde el 14 oct a pedido del usuario (comentado en `home.html`/`home.ts`, se rediseñará). El contacto hoy es por los CTA/FAB de WhatsApp. |
 | **5 — Despliegue de vista previa** | URL pública **no indexable** para que la cliente revise | ✅ Publicado el 15 oct 2026 en `https://yuli-fisioterapia.pages.dev` (Cloudflare Pages, flujo "legacy Pages", conectado a GitHub). Verificado: ambas rutas 200, `noindex`, `robots.txt` `Disallow: /`, JSON-LD, 1 `<h1>`, sin errores de consola ni scroll horizontal en 375px. Falta solo ver la primera preview de `develop` (se crea con el próximo push a esa rama). |
 | **6 — SEO/rendimiento/accesibilidad** | Lighthouse móvil ≥90×4 sobre la URL real | ✅ Cerrada (19 oct 2026). **PageSpeed Insights (servidores de Google)** — Móvil: Performance **94**, Accessibility **100**, Best Practices **100**. Ordenador: **100 / 100 / 100**. SEO 69 solo por el `noindex`, a propósito (sube al quitarlo en Fase 7). |
-| **7 — Producción** | Dominio, correo, analítica, indexación | ⏳ En curso (22 oct 2026): perfil de Google verificado, textos aprobados, sección de reseñas rediseñada y sitio listo para indexar en `develop`. Ver checklist abajo. |
+| **7 — Producción** | Dominio, correo, analítica, indexación | ✅ Cerrada (26 oct 2026): `fisioyuli.com` y `www` activos con SSL, indexable, sitemap enviado y leído por Google, Cloudflare Web Analytics activo, reseñas reales, sin fotos de stock, textos e imágenes aprobados. |
 
 > Cambio de orden (15 oct 2026): antes la Fase 5 era SEO/rendimiento y la 6 el deploy. Se invirtieron porque el usuario quiere tener la preview publicada ya, y la auditoría Lighthouse/Rich Results se hace mejor contra la URL desplegada.
 
@@ -130,17 +130,17 @@ Hecho en `develop` (22 oct 2026):
 - ✅ `noindex` quitado, `robots.txt` → `Allow` + `Sitemap:`, `public/sitemap.xml` (2 URLs). `public/_headers` marca `noindex` solo en el espejo `yuli-fisioterapia.pages.dev`.
 - ✅ Dominio `fisioyuli.com` activo en Cloudflare Pages con SSL.
 
-Pendiente:
+Estado final de la Fase 7:
 1. **Reseñas reales**: 3 cargadas (Jimmy Alejandro Hernandez Yara, Jhon Mario Rodríguez Ramirez —con foto autorizada— y Laura Tejada Gutierrez; todas 5★, oct 2026). Seguir agregando las nuevas (link de cada reseña → nombre, estrellas, texto literal, mes/año) y completar `social.google.rating` / `count` cuando haya varias. Con 1-2 reseñas la sección se centra; con 3+ es carrusel de 2 por vista con flechas (swipe en móvil).
 2. ✅ Imágenes y textos aprobados por la cliente (26 oct 2026). Sin fotos de stock: Terapia Manual Ortopédica y Rehabilitación Deportiva usan fotos propias nuevas (fotos-fisio-10 y -9); la sentadilla del consultorio pasó a Ejercicio Terapéutico. Las fotos 7 (radiografía: muestra el nombre de una paciente) y 8 (ecografía: cara de la paciente + marca de agua Meta AI) quedan sin usar (decisión del usuario).
 3. ✅ En producción e indexable desde el 22 oct 2026 (`robots.txt` abierto, sin `noindex`; el espejo `pages.dev` responde `X-Robots-Tag: noindex`, verificado).
-4. **Google Search Console**: agregar `fisioyuli.com` como propiedad de dominio (verificación por TXT en el DNS de Cloudflare) y enviar `https://fisioyuli.com/sitemap.xml`.
-5. `www.fisioyuli.com`: hoy no resuelve (verificado 26 oct). Agregarlo en Pages → Custom domains y redirigir a la raíz.
+4. ✅ Google Search Console (26 oct 2026): propiedad de dominio `fisioyuli.com`; `https://fisioyuli.com/sitemap.xml` enviado, estado Correcto, 2 páginas descubiertas.
+5. ✅ `www.fisioyuli.com` Active con SSL (26 oct 2026). Opcional: regla de redirección www → raíz en Cloudflare (Rules → Redirect Rules → plantilla "Redirect from WWW to root").
 6. `postalCode` y `geo` del JSON-LD: pendiente que la cliente confirme código postal y ubicación del pin (opcional, mejora Google Maps).
 7. ✅ Sección 12 de la política reescrita (26 oct 2026): sin cookies; Cloudflare Web Analytics sin cookies con datos agregados; enlaces a terceros. `dataPolicyLastUpdated` → 26 oct 2026.
-8. Confirmar que el dominio queda a nombre de la cliente o que ella tiene acceso.
+8. ✅ Titularidad: el dominio queda en la cuenta de Cloudflare del desarrollador (decisión del usuario, 26 oct 2026), que administra el sitio y avisa a la cliente de la renovación anual (comprado el 19 oct 2026 → renovar antes del 19 oct 2027; Cloudflare Registrar lo renueva solo si la tarjeta está activa).
 9. ✅ Contacto: queda solo WhatsApp (decisión del usuario, 26 oct 2026). El formulario sigue en el código, comentado en `home.html`, por si la cliente lo pide más adelante.
-10. **Cloudflare Web Analytics** (decidido 26 oct 2026): activarlo en Pages → `yuli-fisioterapia` → Metrics → Web Analytics → Enable. Cloudflare inyecta el script solo en el siguiente deploy; no requiere código.
+10. ✅ Cloudflare Web Analytics activo (26 oct 2026): el beacon se inyecta en producción (verificado tras el Retry deployment).
 
 ## Decisiones del usuario
 
